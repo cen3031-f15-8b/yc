@@ -1,0 +1,21 @@
+<section data-ng-controller="UserFeedsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="userFeed.name"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == userFeed.user._id">
+		<a class="btn btn-primary" href="/#!/user-feeds/{{userFeed._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="userFeed.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="userFeed.user.displayName"></span>
+		</em>
+	</small>
+</section>
