@@ -1,4 +1,9 @@
+<head>
+    <link rel="stylesheet" href="../css/userfeeds.css">
+</head>
+
 <section data-ng-controller="UserFeedsController" data-ng-init="find()">
+    <!--
     <div class="page-header">
         <h1>User feeds</h1>
     </div>
@@ -15,5 +20,36 @@
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!userFeeds.$resolved || userFeeds.length">
     	No User feeds yet, why don't you <a href="/#!/user-feeds/create">create one</a>?
+    </div> -->
+<body>
+    <div class="row"> 
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="jumbotron usr-jumbo">
+            <h1>Hi! Welcome to your User Feed.</h1>
+            <p>Let's get workin!</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Help</a></p>
+            </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+              <div class="list-group">
+              <a href="#" class="list-group-item">
+              WORKOUT LIBRARY
+              </a>
+              <a href="#" class="list-group-item">
+              CHALLENGES
+              </a>
+              <a href="#" class="list-group-item">
+              RANKINGS
+              </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
 </section>
