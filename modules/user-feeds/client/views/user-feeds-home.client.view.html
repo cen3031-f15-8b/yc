@@ -1,0 +1,71 @@
+<head>
+    <link rel="stylesheet" href="../css/userfeeds.css">
+</head>
+
+<section data-ng-controller="UserFeedsController">
+    <!--
+    <div class="page-header">
+        <h1>User feeds</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="userFeed in userFeeds" data-ng-href="/#!/user-feeds/{{userFeed._id}}" class="list-group-item">
+            <small class="list-group-item-text">
+                Posted on
+                <span data-ng-bind="userFeed.created | date:'medium'"></span>
+                by
+                <span data-ng-bind="userFeed.user.displayName"></span>
+            </small>
+            <h4 class="list-group-item-heading" data-ng-bind="userFeed.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!userFeeds.$resolved || userFeeds.length">
+        No User feeds yet, why don't you <a href="/#!/user-feeds/create">create one</a>?
+    </div> -->
+<body>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="libimg">
+            <img src = "http://defined.com/site_resources/img/KidsClass.jpg" alt = "um">
+            </div>
+            <div class="list-group">
+              <a href="workout-library.client.view.html" class="list-group-item">
+              <h1>WORKOUT LIBRARY</h1>
+              <p> All workouts available to users, including multi-week workout plans, single workouts, and "Today's Workout." </p>
+              </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="challimg">
+            <img src = "http://djmag.ca/wp-content/uploads/2015/02/drake-remixes.jpg" alt = "um">
+            </div>
+              <div class="list-group ">
+              <a href="#" class="list-group-item">
+              <h1>CHALLENGES</h1>
+              <p> Compete with users across the world in special challenges submitted by celebrities, our team, and users like you.</p>
+              </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="rankimg">
+            <img src = "http://static1.1.sqspcdn.com/static/f/791503/12258347/1305641635433/MLB+GPP+leaderboard.jpg?token=6nJtSP1G26bAFBIEyVa3MJcu56k%3D" alt = "um">
+            </div>
+              <div class="list-group ">
+              <a href="#" class="list-group-item">
+              <h1>RANKINGS</h1>
+              <p>Get to know the top performers from around the globe. Customizable to see how you compare to anyone anywhere.</p>
+              </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+</section>
