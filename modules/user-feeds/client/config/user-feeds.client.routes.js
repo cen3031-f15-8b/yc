@@ -10,9 +10,17 @@ angular.module('user-feeds').config(['$stateProvider',
 			url: '/user-feeds',
 			template: '<ui-view/>'
 		}).
-		state('user-feeds.list', {
+		state('user-feeds.home', {
 			url: '',
-			templateUrl: 'modules/user-feeds/views/list-user-feeds.client.view.html'
+			templateUrl: 'modules/user-feeds/views/user-feeds-home.client.view.html'
+		}).
+		state('user-feeds.lib', {
+			url: '/lib',
+			templateUrl: 'modules/user-feeds/views/workout-library.client.view.html'
+		}).
+		state('user-feeds.prev', {
+			url: '/prev-plan',
+			templateUrl: 'modules/user-feeds/views/previous-plan.client.view.html'
 		}).
 		state('user-feeds.create', {
 			url: '/create',

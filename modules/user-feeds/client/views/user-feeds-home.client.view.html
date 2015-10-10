@@ -2,24 +2,24 @@
     <link rel="stylesheet" href="../css/userfeeds.css">
 </head>
 
-<section data-ng-controller="UserFeedsController" data-ng-init="find()">
+<section data-ng-controller="UserFeedsController">
     <!--
     <div class="page-header">
         <h1>User feeds</h1>
     </div>
     <div class="list-group">
         <a data-ng-repeat="userFeed in userFeeds" data-ng-href="/#!/user-feeds/{{userFeed._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="userFeed.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="userFeed.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="userFeed.name"></h4>
+            <small class="list-group-item-text">
+                Posted on
+                <span data-ng-bind="userFeed.created | date:'medium'"></span>
+                by
+                <span data-ng-bind="userFeed.user.displayName"></span>
+            </small>
+            <h4 class="list-group-item-heading" data-ng-bind="userFeed.name"></h4>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!userFeeds.$resolved || userFeeds.length">
-    	No User feeds yet, why don't you <a href="/#!/user-feeds/create">create one</a>?
+        No User feeds yet, why don't you <a href="/#!/user-feeds/create">create one</a>?
     </div> -->
 <body>
     <div class="row">
@@ -28,7 +28,7 @@
             <img src = "http://defined.com/site_resources/img/KidsClass.jpg" alt = "um">
             </div>
             <div class="list-group">
-              <a href="#" class="list-group-item">
+              <a href="workout-library.client.view.html" class="list-group-item">
               <h1>WORKOUT LIBRARY</h1>
               <p> All workouts available to users, including multi-week workout plans, single workouts, and "Today's Workout." </p>
               </a>
