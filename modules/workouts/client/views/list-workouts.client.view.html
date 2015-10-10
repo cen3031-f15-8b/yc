@@ -2,25 +2,86 @@
 
 <section data-ng-controller="WorkoutsController" data-ng-init="find()">
     <div class="row">
-        <div class="col-xs-12">
-            <img src="modules/workouts/img/wide-placeholder.jpg"/>
-        </div>
-        <div class="col-xs-12" id="workout-header">
-            <div class="col-xs-6">
-                <h4>Workout</h4>
-                <div class="col-xs-6">
-                    <p>World</p>
-                </div>
-                <div class="col-xs-6">
-                    <p>Friends</p>
-                </div>
+        <div class="container">
+            <div class="col-xs-12">
+                <img src="modules/workouts/img/wide-placeholder.jpg"/>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-12" id="workout-header">
+                <div class="col-xs-8 x-right">
+                    <h4 class="rush-reg"><strong>Workout</strong></h4>
+                    <div class="col-xs-6 x-left-right">
+                        <p>World</p>
+                        <p><strong>1234</strong> completed</p>
+                        <p><strong>4321</strong> currently</p>
+                    </div>
+                    <div class="col-xs-6 x-left-right">
+                        <p>Friends</p>
+                        <p><strong>32</strong> completed</p>
+                        <p><strong>21</strong> currently</p>
+                    </div>
+                </div>
+                <div class="col-xs-4 x-left">
+                    <h4></h4>
+                    <p style="text-right"><strong>Rating</strong></p>
+                    <div class="col-xs-12 x-left-right">
+                        <i class="glyphicon glyphicon-star"></i>
+                        <i class="glyphicon glyphicon-star"></i>
+                        <i class="glyphicon glyphicon-star"></i>
+                        <i class="glyphicon glyphicon-star"></i>
+                        <i class="glyphicon glyphicon-star"></i>
+                    </div>
+                    <p style="text-right"><strong>Difficulty</strong></p>   
+                    <div class="col-xs-12 x-left-right">
+                        <i class="glyphicon glyphicon-star-empty"></i>
+                        <i class="glyphicon glyphicon-star-empty"></i>
+                        <i class="glyphicon glyphicon-star-empty"></i>
+                        <i class="glyphicon glyphicon-star-empty"></i>
+                        <i class="glyphicon glyphicon-star-empty"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="row">
-
+        <div class="container" id="workout-info">
+            <div class="col-xs-12">
+                <div class="col-xs-4 x-left-right">
+                    <h4><strong>Duration</strong></h4>
+                    <p>12 minuutes</p>
+                </div>
+                <div class="col-xs-3 x-left-right">
+                    <h4><strong>Type</strong></h4>
+                    <p>AMRAP</p>
+                </div>
+                <div class="col-xs-5 x-left-right">
+                    <h4><strong>Equipment</strong></h4>
+                    <ul>
+                        <li>Medicine Ball</li>
+                        <li>Two 10lb weights</li>
+                        <li>Motivation</li>
+                    </ul>
+                </div>
+            </div>
+            <br></br>
+            <div class="col-xs-12">
+                <div class="col-xs-6 x-left-right">
+                    <h4><strong>Excercises</strong></h4>
+                    <ul>
+                            <li><strong>25m</strong> Lorum Ipsum</li>
+                            <li><strong>5</strong> Vel Musicius</li>
+                            <li><strong>10</strong> Deserunt</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom:15px;">
+        <div class="container">
+            <button class="btn start-btn"><h3 class="x-top-bottom"><strong>START</strong></h3></button>
+        </div>
+    </div>
+    <div id="countdown-overlay">
+        
     </div>
 </section>
 
