@@ -19,7 +19,7 @@ angular.module('user-feeds').config(['$stateProvider',
 			templateUrl: 'modules/user-feeds/views/workout-library.client.view.html'
 		}).
 		state('user-feeds.prev', {
-			url: '/prev-plan',
+			url: '/lib/prev-plan',
 			templateUrl: 'modules/user-feeds/views/previous-plan.client.view.html'
 		}).
 		state('user-feeds.category-plan', {
