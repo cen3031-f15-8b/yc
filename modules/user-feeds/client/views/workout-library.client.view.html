@@ -2,9 +2,8 @@
     <link rel="stylesheet" href="../css/userfeeds.css">
 </head>
 
-<section data-ng-controller="UserFeedsController" data-ng-init="find()">
-
 <body>
+<section data-ng-controller="UserFeedsController" data-ng-init="find()">
     <div class="row">
         <div class="col-sm-12">
             <div class="list-group list-header">
@@ -24,15 +23,14 @@
               <a href="#" class="list-group-item">
               <h2>SINGLE WORKOUT</h2>
               </a>
-              <a ui-sref="/prev-plan" class="list-group-item">
+              <a data-ui-sref="user-feeds.prev" class="list-group-item">
               <h2>PREVIOUS PLAN</h2>
               </a>
             </div>
         </div>
     </div>
 
-</body>
-
 
 
 </section>
+</body>
