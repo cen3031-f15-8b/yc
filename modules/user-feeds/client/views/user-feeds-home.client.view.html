@@ -1,7 +1,9 @@
 <head>
     <link rel="stylesheet" href="../css/userfeeds.css">
+    <script src="../config/user-feeds.client.routes.js"></script>
 </head>
 
+<body>
 <section data-ng-controller="UserFeedsController">
     <!--
     <div class="page-header">
@@ -22,14 +24,13 @@
     <div class="alert alert-warning text-center" data-ng-hide="!userFeeds.$resolved || userFeeds.length">
         No User feeds yet, why don't you <a href="/#!/user-feeds/create">create one</a>?
     </div> -->
-<body>
     <div class="row">
         <div class="col-sm-12">
             <div class="libimg">
             <img src = "http://defined.com/site_resources/img/KidsClass.jpg" alt = "um">
             </div>
             <div class="list-group">
-              <a href="workout-library.client.view.html" class="list-group-item">
+              <a data-ui-sref="user-feeds.lib" class="list-group-item">
               <h1>WORKOUT LIBRARY</h1>
               <p> All workouts available to users, including multi-week workout plans, single workouts, and "Today's Workout." </p>
               </a>
@@ -65,8 +66,7 @@
         </div>
     </div>
 
-</body>
-
 
 
 </section>
+</body>
