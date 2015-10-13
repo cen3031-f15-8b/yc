@@ -1,9 +1,37 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts',
-	function($scope, $stateParams, $location, Authentication, Workouts ) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout',
+	function($scope, $stateParams, $location, Authentication, Workouts, $timeout ) {
 		$scope.authentication = Authentication;
+
+		$scope.check = false;
+		$scope.counter = 2;
+		$scope.go = "GO!"
+		var stopped;
+		
+		$scope.toggleCustom = function(){
+		if( $scope.counter > 0 ){
+			$scope.check = true;
+			$scope.cdstring = ':' + $scope.counter;
+			$timeout(function(){
+				console.log( $scope.cdstring);
+				$scope.counter--;
+				$scope.toggleCustom();
+			}, 1000);
+		}
+		else
+		{
+			$scope.cdstring = "GO!";
+			$timeout(function(){
+				console.log($scope.cdstring);}, 1000);
+			$timeout(function(){
+				$scope.counter = 2;
+				$scope.check = false;}, 1000);
+		}
+
+		};
+
 
 		// Create new Workout
 		$scope.create = function() {
@@ -61,5 +89,10 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 				workoutId: $stateParams.workoutId
 			});
 		};
+
+
+
 	}
+
+	
 ]);
