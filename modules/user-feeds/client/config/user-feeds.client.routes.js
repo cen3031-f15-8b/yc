@@ -19,8 +19,32 @@ angular.module('user-feeds').config(['$stateProvider',
 			templateUrl: 'modules/user-feeds/views/workout-library.client.view.html'
 		}).
 		state('user-feeds.prev', {
-			url: '/prev-plan',
+			url: '/lib/prev-plan',
 			templateUrl: 'modules/user-feeds/views/previous-plan.client.view.html'
+		}).
+		state('user-feeds.category-plan', {
+			url: '/lib/category',
+			templateUrl: 'modules/user-feeds/views/category-plan-user-feed.client.view.html'
+		}).
+		state('user-feeds.whole-body-plan', {
+			url: '/lib/category/whole-body',
+			templateUrl: 'modules/user-feeds/views/whole-body-plans.client.view.html'
+		}).
+		state('user-feeds.single-workout', {
+			url: '/lib/single-workout',
+			templateUrl: 'modules/user-feeds/views/single-workout.client.view.html'
+		}).
+		state('user-feeds.category-workout', {
+			url: '/lib/single-workout/category',
+			templateUrl: 'modules/user-feeds/views/single-workout-category.client.view.html'
+		}).
+		state('user-feeds.whole-body-workout', {
+			url: '/lib/single-workout/category/whole-body',
+			templateUrl: 'modules/user-feeds/views/whole-body-workouts.client.view.html'
+		}).
+		state('user-feeds.todays-workout', {
+			url: '/lib/single-workout/todays-workout',
+			templateUrl: 'module/user-feeds/views/todays-workout.client.view.html'
 		}).
 		state('user-feeds.create', {
 			url: '/create',

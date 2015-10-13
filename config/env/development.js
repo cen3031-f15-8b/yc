@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/youth-combine-dev' || 'mongodb:exscruzme:Wila4157!@ds029814.mongolab.com:29814/mean-test',
+	db: 'mongodb://localhost/youth-combine-dev',
 	app: {
 		title: 'Youth Combine - Development Environment'
 	},

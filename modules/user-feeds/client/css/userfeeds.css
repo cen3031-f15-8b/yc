@@ -1,5 +1,7 @@
-img {
-	width:100%;
+.img {
+  height:400px;
+  width:100%;
+  overflow:hidden;
 }
 
 .list-header {
@@ -8,4 +10,13 @@ img {
 
 .list-group-item {
 	margin-bottom: 10px;
+}
+
+.yellow-heading {
+	background-color: yellow;
+	text-align: center;
+}
+
+.workout-content {
+	padding-left: 10px;
 }
