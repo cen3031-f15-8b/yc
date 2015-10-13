@@ -2,33 +2,37 @@
         max-width: 100%;
     }
 
-    #workout-header{
+    .workout-header{
         background-color:white;
         padding-bottom:15px;
     }
 
-    #workout-info{
+    .workout-info{
     	background-color:white;
     	margin: 15px auto;
     	padding:15px;
     }
 
-    #workout-info ul
+    .workout-info ul
     {
     	padding:0px !important;
     }
-    #workout-info li {list-style:none;}
+    .workout-info li {list-style:none;}
 
-    #countdown-overlay{
+
+    .overlay-hidden{ display: none;}
+    .countdown-overlay{
     	position:fixed;
     	top:0;
     	bottom:0;
     	left:0;
     	right:0;
     	background-color:black;
-    	opacity:0.8;
-    	display:none;
+    	opacity:0.8;   
+    	display:block !important; 
     }
+    .countdown-overlay h1 { font-size:72px;color:red; position:fixed; left:50%; top:50%;}
+
 
     .start-btn{
     	width:100%;
@@ -39,5 +43,5 @@
     @media (max-width:320px)
     {
     	p { font-size: 12px; margin:0;}
-    	#workout-info li {font-size:12px;}
+    	.workout-info li {font-size:12px;}
     }
