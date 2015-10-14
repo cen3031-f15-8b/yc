@@ -31,7 +31,7 @@
     	opacity:0.8;
     	display:block !important;
     }
-    .countdown-overlay h1 { font-size:72px;color:red; position:fixed; left:50%; top:50%;}
+    .countdown-overlay h1 { font-size:72px;color:red; position:fixed; width:100%; text-align:center; top:40%;}
 
 
     .start-btn{
