@@ -38,7 +38,12 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 		$scope.timer = function(){
 			if( $scope.tCounter2 > 0 ){
 				$scope.check = true;
-				$scope.cdstring = $scope.tCounter1 + ':' + $scope.tCounter2;
+				if($scope.tCounter2 < 10) {
+					$scope.cdstring = $scope.tCounter1 + ':' + '0' + $scope.tCounter2;
+				}
+				else {
+					$scope.cdstring = $scope.tCounter1 + ':' + $scope.tCounter2;
+				}
 				$timeout(function(){
 					console.log( $scope.cdstring);
 					$scope.tCounter2--;
@@ -47,7 +52,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 			}
 			else if( $scope.tCounter1 > 0 ){
 				$scope.check = true;
-				$scope.cdstring = $scope.tCounter1 + ':' + $scope.tCounter2;
+				$scope.cdstring = $scope.tCounter1 + ':' + '00';
 				$timeout(function(){
 					console.log( $scope.cdstring);
 					$scope.tCounter1--;

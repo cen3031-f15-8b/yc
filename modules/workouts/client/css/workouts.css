@@ -15,7 +15,7 @@
 
     .workout-info ul
     {
-    	padding:0px !important;
+    	padding:0 !important;
     }
     .workout-info li {list-style:none;}
 
@@ -28,8 +28,8 @@
     	left:0;
     	right:0;
     	background-color:black;
-    	opacity:0.8;   
-    	display:block !important; 
+    	opacity:0.8;
+    	display:block !important;
     }
     .countdown-overlay h1 { font-size:72px;color:red; position:fixed; left:50%; top:50%;}
 
