@@ -45,7 +45,7 @@
     	p { font-size: 12px; margin:0;}
     	.workout-info li {font-size:12px;}
     }
-
+.container, .row { padding-left:0px; padding-right:0px; margin-left: 0px; margin-right:0px; }
     .x-top { margin-top: 0px; padding-top: 0px;}
 .x-bottom { margin-bottom: 0px; padding-bottom: 0px;}
 .x-left { margin-left:0px; padding-left:0px;}
