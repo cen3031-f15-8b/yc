@@ -44,8 +44,15 @@
     {
     	p { font-size: 12px; margin:0;}
     	.workout-info li {font-size:12px;}
+        .row{ max-width:320px;}
     }
-    .x-top { margin-top: 0px; padding-top: 0px;}
+*{
+    box-sizing: border-box !important;
+}
+
+.row, .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse { margin-left: 0px; margin-right: 0px;}
+
+.x-top { margin-top: 0px; padding-top: 0px;}
 .x-bottom { margin-bottom: 0px; padding-bottom: 0px;}
 .x-left { margin-left:0px; padding-left:0px;}
 .x-right { margin-right: 0px; padding-right:0px;}
