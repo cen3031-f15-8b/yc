@@ -1,15 +1,15 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout',
-	function($scope, $stateParams, $location, Authentication, Workouts, $timeout ) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout',
+	function($scope, $window, $stateParams, $location, Authentication, Workouts, $timeout ) {
 		$scope.authentication = Authentication;
 
 		$scope.check = false;
 		$scope.counter = 2;
 		$scope.go = "GO!"
 		var stopped;
-		
+
 		$scope.toggleCustom = function(){
 		if( $scope.counter > 0 ){
 			$scope.check = true;
@@ -85,14 +85,20 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 
 		// Find existing Workout
 		$scope.findOne = function() {
-			$scope.workout = Workouts.get({ 
+			$scope.workout = Workouts.get({
 				workoutId: $stateParams.workoutId
 			});
 		};
 
+		// Get current location
+		$window.navigator.geolocation.getCurrentPosition(function(position) {
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
 
+			console.log(position);
+		});
 
 	}
 
-	
+
 ]);
