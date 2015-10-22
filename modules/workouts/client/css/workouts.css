@@ -15,7 +15,7 @@
 
     .workout-info ul
     {
-    	padding:0px !important;
+    	padding:0 !important;
     }
     .workout-info li {list-style:none;}
 
@@ -28,15 +28,15 @@
     	left:0;
     	right:0;
     	background-color:black;
-    	opacity:0.8;   
-    	display:block !important; 
+    	opacity:0.8;
+    	display:block !important;
     }
-    .countdown-overlay h1 { font-size:72px;color:red; position:fixed; left:50%; top:50%;}
+    .countdown-overlay h1 { font-size:72px;color:red; position:fixed; width:100%; text-align:center; top:40%;}
 
 
     .start-btn{
     	width:100%;
-    	padding: 0px 12px;
+    	padding: 0 12px;
     	background-color: white;
     }
 
@@ -44,4 +44,20 @@
     {
     	p { font-size: 12px; margin:0;}
     	.workout-info li {font-size:12px;}
+        .row{ max-width:320px;}
     }
+*{
+    box-sizing: border-box !important;
+}
+
+.row, .container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse { margin-left: 0px; margin-right: 0px;}
+
+.x-top { margin-top: 0px; padding-top: 0px;}
+.x-bottom { margin-bottom: 0px; padding-bottom: 0px;}
+.x-left { margin-left:0px; padding-left:0px;}
+.x-right { margin-right: 0px; padding-right:0px;}
+
+.x-left-right { padding-left: 0px;  padding-right: 0px; margin-left: 0px; margin-right: 0px; }
+.x-top-bottom { padding-top: 0px;  padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px;}
+
+.container { padding-left: 0; padding-right: 0; }

@@ -57,6 +57,10 @@ angular.module('user-feeds').config(['$stateProvider',
 		state('user-feeds.edit', {
 			url: '/:userFeedId/edit',
 			templateUrl: 'modules/user-feeds/views/edit-user-feed.client.view.html'
+		}).
+		state('workout', {
+			url: '/workout',
+			templateUrl: 'modules/workouts/views/list-workouts.client.view.html'
 		});
 	}
 ]);
