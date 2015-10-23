@@ -1,7 +1,9 @@
 'use strict';
 
+var secrets = require('../config.secret');
+
 module.exports = {
-	db: 'mongodb://localhost/youth-combine-dev',
+	db: secrets.db || 'mongodb://localhost/youth-combine-dev',
 	app: {
 		title: 'Youth Combine - Development Environment'
 	},
