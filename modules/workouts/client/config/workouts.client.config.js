@@ -15,11 +15,5 @@ angular.module('workouts').run(['Menus',
 			title: 'List Workouts',
 			state: 'workouts.list'
 		});
-
-		// Add the dropdown create item
-		Menus.addSubMenuItem('topbar', 'workouts', {
-			title: 'Create Workout',
-			state: 'workouts.create'
-		});
 	}
 ]);
