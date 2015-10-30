@@ -8,6 +8,8 @@
 			<span class="icon-bar"></span>
 		</button>
 		<a data-ui-sref="home" class="navbar-brand">Youth Combine</a>
+		<button class="col-xs-offset-1 navbar-button" type="button" value="Back" data-ng-click="goBack()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+		
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
