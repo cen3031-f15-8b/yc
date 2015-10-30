@@ -46,18 +46,6 @@ angular.module('user-feeds').config(['$stateProvider',
 			url: '/lib/single-workout/todays-workout',
 			templateUrl: 'module/user-feeds/views/todays-workout.client.view.html'
 		}).
-		state('user-feeds.create', {
-			url: '/create',
-			templateUrl: 'modules/user-feeds/views/create-user-feed.client.view.html'
-		}).
-		state('user-feeds.view', {
-			url: '/:userFeedId',
-			templateUrl: 'modules/user-feeds/views/view-user-feed.client.view.html'
-		}).
-		state('user-feeds.edit', {
-			url: '/:userFeedId/edit',
-			templateUrl: 'modules/user-feeds/views/edit-user-feed.client.view.html'
-		}).
 		state('workout', {
 			url: '/workout',
 			templateUrl: 'modules/workouts/views/list-workouts.client.view.html'
