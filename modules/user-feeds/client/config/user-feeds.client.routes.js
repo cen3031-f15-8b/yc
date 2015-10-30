@@ -61,6 +61,14 @@ angular.module('user-feeds').config(['$stateProvider',
 		state('workout', {
 			url: '/workout',
 			templateUrl: 'modules/workouts/views/list-workouts.client.view.html'
+		}).
+		state('user-feeds.upper-body-plan', {
+			url: '/lib/category/upper-body',
+			templateUrl: 'modules/user-feeds/views/upper-body-plans.client.view.html'
+		}).
+		state('user-feeds.lower-body-plan', {
+			url: '/lib/category/lower-body',
+			templateUrl: 'modules/user-feeds/views/lower-body-plans.client.view.html'
 		});
 	}
 ]);
