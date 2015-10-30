@@ -75,9 +75,9 @@ var UserSchema = new Schema({
 	roles: {
 		type: [{
 			type: String,
-			enum: ['user', 'admin']
+			enum: ['user', 'admin', 'parent', 'child']
 		}],
-		default: ['user']
+		default: ['parent']
 	},
 	updated: {
 		type: Date
