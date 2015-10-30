@@ -10,21 +10,9 @@ angular.module('parents').config(['$stateProvider',
 			url: '/parents',
 			template: '<ui-view/>'
 		}).
-		state('parents.list', {
+		state('parents.parent-view', {
 			url: '',
-			templateUrl: 'modules/parents/views/list-parents.client.view.html'
-		}).
-		state('parents.create', {
-			url: '/create',
-			templateUrl: 'modules/parents/views/create-parent.client.view.html'
-		}).
-		state('parents.view', {
-			url: '/:parentId',
-			templateUrl: 'modules/parents/views/view-parent.client.view.html'
-		}).
-		state('parents.edit', {
-			url: '/:parentId/edit',
-			templateUrl: 'modules/parents/views/edit-parent.client.view.html'
+			templateUrl: 'modules/parents/views/parent-feed.client.view.html'
 		});
 	}
 ]);
