@@ -1,8 +1,8 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout',
-	function($scope, $stateParams, $location, Authentication, Workouts, $timeout ) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout',
+	function($scope, $window, $stateParams, $location, Authentication, Workouts, $timeout ) {
 		$scope.authentication = Authentication;
 
 		$scope.check = false;
@@ -131,7 +131,13 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 			});
 		};
 
+		// Get current location
+		$window.navigator.geolocation.getCurrentPosition(function(position) {
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
 
+			console.log(position);
+		});
 
 	}
 
