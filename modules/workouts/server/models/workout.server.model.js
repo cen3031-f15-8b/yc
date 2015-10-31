@@ -9,21 +9,34 @@ var mongoose = require('mongoose'),
 /**
  * Workout Schema
  */
-var WorkoutSchema = new Schema({
-	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Workout name',
-		trim: true
-	},
-	created: {
-		type: Date,
-		default: Date.now
-	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
-});
+/*Adrian's Code Starts Here */
+
+ var WorkoutSchema = new Schema({
+ 	name: {
+ 		type: String,
+ 		required: 'Please give workout name',
+ 		trim: true
+ 	},
+ 	equipment: {
+ 		type: [String]
+ 	},
+ 	exercises: {
+ 		type: [String]
+ 	},
+ 	minutes: {
+ 		type: Number
+ 	},
+ 	seconds: {
+ 		type: Number
+ 	},
+ 	type: { 
+ 		type: String
+ 	},
+ 	difficulty: {
+ 		type: Number
+ 	}
+ });
+
+ /*Adrian's Code End Here */
 
 mongoose.model('Workout', WorkoutSchema);

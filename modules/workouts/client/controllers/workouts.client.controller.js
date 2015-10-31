@@ -78,7 +78,13 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 		$scope.create = function() {
 			// Create new Workout object
 			var workout = new Workouts ({
-				name: this.name
+				name: this.name,
+				equipment: this.equipment,
+				exercises: this.exercises,
+				minutes: this.minutes,
+				seconds: this.seconds,
+				type: this.type,
+				difficulty: this.difficulty
 			});
 
 			// Redirect after save
@@ -87,6 +93,12 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 
 				// Clear form fields
 				$scope.name = '';
+				$scope.equipment = '';
+				$scope.exercises = '';
+				$scope.minutes = '';
+				$scope.seconds = '';
+				$scope.type = '';
+				$scope.difficulty = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
