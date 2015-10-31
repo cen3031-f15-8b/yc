@@ -5,7 +5,8 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
-	crypto = require('crypto');
+	crypto = require('crypto'),
+	validator = require('validator');
 
 /**
  * A Validation function for local strategy properties
@@ -108,7 +109,8 @@ var UserSchema = new Schema({
  * Hook a pre save method to hash the password
  */
 UserSchema.pre('save', function(next) {
-	if (this.password && this.password.length > 6) {
+	// Check to make sure password isn't already base64 encoded before hashing and encoding again -- XXX: assumes user won't use base64 encoded string
+	if (this.password && this.password.length > 6 && !validator.isBase64(this.password)) {
 		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
 		this.password = this.hashPassword(this.password);
 	}
