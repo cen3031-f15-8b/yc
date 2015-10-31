@@ -13,14 +13,10 @@
 		<div class ="col-sm-12">
 			<div class="list-group">
 				<h3 class="list-group-item heading">My Children</h3>
-				<a href="#" class = "list-group-item">
-					<h4>John Doe</h4>
-					<p>View Activity</p>
-				</a>
-				<a href="#" class = "list-group-item">
-					<h4>Jane Doe</h4>
-					<p>View Activity</p>
-				</a>
+				<li  class="list-group-item" ng-repeat="child in children">
+					<h4>{{ child.displayName }}</h4>
+					<!-- <p>View Activity</p> -->
+				</li>
 			</div>
 		</div>
 	</div>
