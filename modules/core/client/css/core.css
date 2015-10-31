@@ -32,6 +32,24 @@ a:hover .header-profile-image {
 	padding-bottom: 11px !important;
 }
 
+.navbar-button {
+	position: relative;
+	background: transparent;
+	border: 1px solid #3E3B3B;
+	height: 100%;
+	padding: 10px;
+	float: left;
+	border-radius: 4px;
+	clear: both;
+	margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+}
+
+.navbar-button span {
+	color: white;
+}
+
 body{
 	background-color: #21b51e;
 
