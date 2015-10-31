@@ -82,7 +82,7 @@ exports.signupChild = function(req, res) {
 			});
 		} else {
 			User.findOne({username: req.user.username}).exec(function(err, parentUser) {
-
+				console.log(user);
 				parentUser.children.push(user);
 				parentUser.save(function(err){
 					if (err) {
