@@ -37,6 +37,11 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
 	},
+	age: {
+		type: Number,
+		default: 0,
+		validate: [validateLocalStrategyProperty, 'Please fill in the age']
+	},
 	displayName: {
 		type: String,
 		trim: true
