@@ -37,6 +37,11 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
 	},
+	age: {
+		type: Number,
+		default: 0,
+		validate: [validateLocalStrategyProperty, 'Please fill in the age']
+	},
 	displayName: {
 		type: String,
 		trim: true
@@ -59,6 +64,10 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
 	},
+	children:[{
+		type: Schema.ObjectId,
+		ref: 'User'
+	}],
 	salt: {
 		type: String
 	},
@@ -75,9 +84,9 @@ var UserSchema = new Schema({
 	roles: {
 		type: [{
 			type: String,
-			enum: ['user', 'admin']
+			enum: ['user', 'admin', 'parent', 'child']
 		}],
-		default: ['user']
+		default: ['parent']
 	},
 	updated: {
 		type: Date
