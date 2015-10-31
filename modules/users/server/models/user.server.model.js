@@ -86,6 +86,9 @@ var UserSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+	previousWorkoutID: {
+		type: String
+	}
 	/* For reset password */
 	resetPasswordToken: {
 		type: String

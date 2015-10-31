@@ -22,6 +22,10 @@ angular.module('plans').config(['$stateProvider',
 			url: '/upper-body',
 			templateUrl: 'modules/plans/views/upper-body-plans.client.view.html'
 		}).
+		state('plans.lib', {
+			url: '/lib',
+			templateUrl: 'modules/plans/views/workout-library.client.view.html'
+		}).
 		state('plans.lower-body-plan', {
 			url: '/lower-body',
 			templateUrl: 'modules/plans/views/lower-body-plans.client.view.html'
