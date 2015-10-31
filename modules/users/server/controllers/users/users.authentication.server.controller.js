@@ -81,6 +81,19 @@ exports.signupChild = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			User.findOne({username: req.user.username}).exec(function(err, parentUser) {
+
+				parentUser.children.push(user);
+				parentUser.save(function(err){
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					}
+				});
+
+			});
+
 			res.status(200).send({
 				message: 'Added a child!'
 			});
