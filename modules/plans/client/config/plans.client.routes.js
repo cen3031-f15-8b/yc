@@ -11,7 +11,7 @@ angular.module('plans').config(['$stateProvider',
 			template: '<ui-view/>'
 		}).
 		state('plans.list', {
-			url: '',
+			url: '/list',
 			templateUrl: 'modules/plans/views/list-plans.client.view.html'
 		}).
 		state('plans.whole-body-plan', {
@@ -27,7 +27,7 @@ angular.module('plans').config(['$stateProvider',
 			templateUrl: 'modules/plans/views/lower-body-plans.client.view.html'
 		}).
 		state('plans.category-plan', {
-			url: '/category',
+			url: '',
 			templateUrl: 'modules/plans/views/category-plan.client.view.html'
 		}).
 		state('plans.create', {
