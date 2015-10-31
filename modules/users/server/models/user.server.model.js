@@ -64,12 +64,10 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
 	},
-	children: {
-		type: [{
-			type: Schema.ObjectId,
-			ref: 'User'
-		}]
-	},
+	children:[{
+		type: Schema.ObjectId,
+		ref: 'User'
+	}],
 	salt: {
 		type: String
 	},
