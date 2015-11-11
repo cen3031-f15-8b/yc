@@ -9,27 +9,30 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 		$scope.counter = 2;
 		$scope.tCounter1 = 12;
 		$scope.tCounter2 = 0;
-		$scope.go = 'GO!';
+		$scope.starttxt = 'START';
+		$scope.go = false;
 		var stopped;
 
 		$scope.toggleCustom = function(){
 		if( $scope.counter > 0 ){
 			$scope.check = true;
-			$scope.cdstring = ':' + $scope.counter;
+			$scope.go = true;
+			$scope.gostring = ':' + $scope.counter;
 			$timeout(function(){
-				console.log( $scope.cdstring);
+				console.log( $scope.gostring);
 				$scope.counter--;
 				$scope.toggleCustom();
 			}, 1000);
 		}
 		else
 		{
-			$scope.cdstring = 'GO!';
+			$scope.gostring = 'GO!';
 			$timeout(function(){
-				console.log($scope.cdstring);}, 1000);
+				console.log($scope.gostring);}, 1000);
 			$timeout(function(){
 				$scope.counter = 2;
 				$scope.check = false;
+				$scope.go = false;
 				$scope.timer();
 			}, 1000);
 		}
@@ -71,7 +74,6 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 					$scope.check = false;}, 1000);
 			}
 		};
-
 
 
 		// Create new Workout

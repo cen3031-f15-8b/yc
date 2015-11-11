@@ -76,13 +76,25 @@
         </div>
     </div>
     <div class="row" style="margin-bottom:15px;">
+        <div class = "container"> 
+            <div class = "overlay-hidden" ng-class="{'countdown-overlay': go}">
+            <h1 ng-bind="gostring"></h1>
+            </div>
+        </div>
         <div class="container">
-            <button ng-click="toggleCustom()" class="btn start-btn"><h3 class="x-top-bottom"><strong>START</strong></h3></button>
+            <button ng-click="toggleCustom()" class="btn start-btn"><h3 class="x-top-bottom" ng-bind="check ? cdstring : starttxt"></h3></button>
         </div>
     </div>
+
+    <!--Pop Up timer and Stop Button
     <div class="overlay-hidden" ng-class="{'countdown-overlay' : check}">
         <h1 ng-bind="cdstring"></h1>
     </div>
+    <div ng-class="">
+        <div class="container">
+        <button ng-click="stopTimer()" class="btn btn-danger"><h3 class = "x-top-bottom"><b>STOP</b></h3></button>
+        </div>
+    </div>-->
 </section>
 
 <style>
