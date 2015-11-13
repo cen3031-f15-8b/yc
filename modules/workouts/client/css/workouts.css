@@ -38,6 +38,12 @@
     	padding: 0 12px;
     	background-color: white;
     }
+    .stop-btn{
+        width:100%;
+        padding: 0 12px;
+        background-color: red;
+        color: white;
+    }
 
     @media (max-width:320px)
     {

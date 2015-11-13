@@ -1,8 +1,8 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout',
-	function($scope, $stateParams, $location, Authentication, Workouts, $timeout ) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout', '$state',
+	function($scope, $stateParams, $location, Authentication, Workouts, $timeout, $state) {
 		$scope.authentication = Authentication;
 
 		$scope.check = false;
@@ -11,12 +11,13 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 		$scope.tCounter2 = 0;
 		$scope.starttxt = 'START';
 		$scope.go = false;
-		var stopped;
+		$scope.stopped = true;
 
 		$scope.toggleCustom = function(){
 		if( $scope.counter > 0 ){
 			$scope.check = true;
 			$scope.go = true;
+			$scope.stopped = false;
 			$scope.gostring = ':' + $scope.counter;
 			$timeout(function(){
 				console.log( $scope.gostring);
@@ -41,6 +42,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 		$scope.timer = function(){
 			if( $scope.tCounter2 > 0 ){
 				$scope.check = true;
+				$scope.stopped = false;
 				if($scope.tCounter2 < 10) {
 					$scope.cdstring = $scope.tCounter1 + ':' + '0' + $scope.tCounter2;
 				}
@@ -74,6 +76,30 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 					$scope.check = false;}, 1000);
 			}
 		};
+
+		// Stop the timer and reload the page
+		$scope.stopTimer = function() {
+			// Set 'stopped' to true 
+			$scope.stopped = true;
+			// should stop the timer? **BUGS**
+			$timeout(function() {
+				$scope.check = false;
+				$scope.tCounter1 = 0;
+				$scope.tCounter2 = 0;
+			});
+			// log on console 
+			$timeout(function(){
+					console.log('STOP');
+			});
+			// should reload the page when clicked
+			var dstPath = '/workouts';
+		    if ($location.path() === dstPath) {
+		        $state.reload();
+		    } else {
+		        $location.path(dstPath);
+		    }
+		};
+
 
 
 		// Create new Workout
