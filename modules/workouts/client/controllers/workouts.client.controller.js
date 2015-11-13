@@ -159,7 +159,13 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 			});
 		};
 
+		// Get current location
+		$window.navigator.geolocation.getCurrentPosition(function(position) {
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
 
+			console.log(position);
+		});
 
 	}
 

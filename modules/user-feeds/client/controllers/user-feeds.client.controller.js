@@ -57,7 +57,7 @@ angular.module('user-feeds').controller('UserFeedsController', ['$scope', '$stat
 
 		// Find existing User feed
 		$scope.findOne = function() {
-			$scope.userFeed = UserFeeds.get({ 
+			$scope.userFeed = UserFeeds.get({
 				userFeedId: $stateParams.userFeedId
 			});
 		};

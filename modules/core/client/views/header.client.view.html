@@ -1,5 +1,6 @@
 <div class="container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
+		<button class="navbar-button" type="button" value="Back" data-ng-click="goBack()"><span class="glyphicon glyphicon-arrow-left"></span></button>
 		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()"
 		data-ng-show="authentication.user">
 			<span class="sr-only">Toggle navigation</span>
@@ -7,7 +8,6 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a data-ui-sref="home" class="navbar-brand">Youth Combine</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
@@ -48,9 +48,9 @@
 					<li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'">
 						<a data-ui-sref="settings.password">Change Password</a>
 					</li>
-					<li data-ui-sref-active="active">
+					<!-- <li data-ui-sref-active="active">
 						<a data-ui-sref="settings.accounts">Manage Social Accounts</a>
-					</li>
+					</li> -->
 					<li class="divider"></li>
 					<li>
 						<a href="/api/auth/signout" target="_self">Signout</a>
