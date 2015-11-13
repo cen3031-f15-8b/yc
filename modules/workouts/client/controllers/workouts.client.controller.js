@@ -1,8 +1,8 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout', '$state',
-	function($scope, $stateParams, $location, Authentication, Workouts, $timeout, $state) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout', '$state', '$window',
+	function($scope, $stateParams, $location, Authentication, Workouts, $timeout, $state, $window) {
 		$scope.authentication = Authentication;
 
 		$scope.check = false;
