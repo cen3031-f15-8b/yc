@@ -49,13 +49,13 @@ exports.signup = function(req, res) {
 
 exports.signupChild = function(req, res) {
 	if (!req.user) {
-		res.status(400).send({
+		return res.status(400).send({
 			message: 'Must be logged in to create child!'
 		});
 	}
 
 	if (req.user.roles[0] != 'parent') { // If not a parent
-		res.status(400).send({
+		return res.status(400).send({
 			message: 'Cannot create child account if you are not a parent!'
 		});
 	}
