@@ -137,60 +137,89 @@ describe('signupChild() method -- signup new child user and link to parent', fun
 
     describe('should not be able to add child user if not signed in as parent', function(){
         it('should not be able to add child if not signed in at all', function(done){
-            //done(); // XXX/TODO: add test content
+            agent.post('/api/auth/signupchild').
+                send(childCredentials2).
+                expect(400).
+                end(function(err, res){
+                    if (err) {
+                        return done(err);
+                    }
+
+
+                    (res.body).should.have.property('message');
+                    (res.body.message).should.be.exactly('Must be logged in to create child!');
+
+                    done();
+                });
         });
 
-        it('should not be able to add child if signed in as child', function(done){
-            // XXX/TODO: fix post to /api/auth/signin below
-            loneChildUser = new User({
-                firstName: 'Lone',
-                lastName: 'Child',
-                displayName: 'Lone Child',
-                email: 'nobody@example.com',
-                username: 'lonechild',
-                password: 'lonechildpw',
-                roles: ['child'],
-                provider: 'local'
-            });
+        xit('should not be able to add child if signed in as child -- FIXME!', function(done){
 
-            loneChildUser.save(function(err, user){
-                if (err) {
-                    return done(err);
-                }
+            agent.post('/api/auth/signup').
+                send(childCredentials1).
+                expect(200).
+                end(function(err, res){
+                    (res.body).should.have.property('username');
+                    (res.body.username).should.be.exactly(childCredentials1.username);
 
-                console.log(User.findOne());
-
-                var loneChildCredentials = {
-                    username: loneChildUser.username,
-                    password: loneChildUser.password
-                };
-
-                agent.post('/api/auth/signin').
-                    send(loneChildCredentials).
-                    expect(200).
-                    end(function(err, res){
-                        //console.log(res);
+                    User.findOne({'username': childCredentials1.username}, function(err, user){
                         if (err) {
                             return done(err);
                         }
+                        user.roles[0] = 'child'; // signup function above creates a parent user; lets make them a child instead
 
-                        (res.body).should.have.property('username');
-                        (res.body.username).should.match(loneChildUser.username);
+                        user.save(function(err, user){
+                            if (err) {
+                                return done(err);
+                            }
 
-                        agent.post('/api/auth/signupchild').
-                            send(childCredentials1).
-                            expect(400).
-                            end(function(err, res){
-                                if (err) {
-                                    return done(err);
-                                }
+                            should(user).have.property('roles');
+                            user.roles.should.have.lengthOf(1);
+                            user.roles[0].should.be.exactly('child');
 
-                                (res.body.message).should.exist();
-                            });
-                    });
-            });
+                            agent.get('/api/auth/signout').
+                                expect(302).
+                                end(function(err, res){
+                                    if (err) {
+                                        return done(err);
+                                    }
 
-            done();
+                                    agent.post('/api/auth/signin').
+                                        send({
+                                            username: childCredentials1.username,
+                                            password: childCredentials1.password
+                                        }).
+                                        expect(200).
+                                        end(function(err, res){
+                                            if (err) {
+                                                return done(err);
+                                            }
+
+                                            (res.body).should.have.property('username');
+                                            (res.body.username).should.be.exactly(childCredentials1.username);
+                                            (res.body).should.have.property('roles');
+                                            (res.body.roles).should.have.lengthOf(1);
+                                            (res.body.roles[0]).should.be.exactly('child');
+
+                                            agent.post('/api/auth/signupchild').
+                                                send(childCredentials2).
+                                                expect(400).
+                                                end(function(err, res){
+                                                    if (err) {
+                                                        return done(err);
+                                                    }
+
+
+                                                    (res.body).should.have.property('message');
+                                                    (res.body.message).should.be.exactly('Cannot create child account if you are not a parent!');
+
+                                                    done();
+                                                });
+                                        });
+                                });
+                        });
+                    })
+                });
         });
     });
 
@@ -247,18 +276,174 @@ describe('signupChild() method -- signup new child user and link to parent', fun
 
                                         done();
                                     });
-
-
                             });
-
                     });
-
-
-
             });
-
-
     });
+
+    it('should be able to add two children', function(done){
+        agent.post('/api/auth/signup').
+            send(parentCredentials).
+            expect(200).
+            end(function(err, res){
+                if (err) {
+                    return done(err);
+                }
+
+                (res.body.username).should.match(parentCredentials.username);
+
+
+                parentCredentials = {
+                    username: parentCredentials.username,
+                    password: parentCredentials.password
+                };
+                agent.post('/api/auth/signin').
+                    send(parentCredentials).
+                    expect(200).
+                    end(function(err, res){
+                        if (err) {
+                            return done(err);
+                        }
+
+                        (res.body.username).should.match(parentCredentials.username);
+
+
+                        agent.post('/api/auth/signupchild'). // add child1
+                            send(childCredentials1).
+                            expect(200).
+                            end(function(err, res){
+                                if (err) {
+                                    return done(err);
+                                }
+
+                                (res.body).should.have.property('message');
+                                (res.body.message).should.be.exactly('Added a child!');
+
+                                agent.get('/api/users/me').
+                                    expect(200).
+                                    end(function(err, res){
+                                        if (err) {
+                                            return done(err);
+                                        }
+
+                                        (res.body).should.have.property('children');
+                                        (res.body.children).should.have.length(1);
+                                        (res.body.children[0]).should.have.property('username');
+                                        (res.body.children[0].username).should.be.exactly(childCredentials1.username);
+
+                                        agent.post('/api/auth/signupchild'). // add child2
+                                            send(childCredentials2).
+                                            expect(200).
+                                            end(function(err, res){
+                                                if (err) {
+                                                    return done(err);
+                                                }
+
+                                                (res.body).should.have.property('message');
+                                                (res.body.message).should.be.exactly('Added a child!');
+
+                                                agent.get('/api/users/me').
+                                                    expect(200).
+                                                    end(function(err, res){
+                                                        if (err) {
+                                                            return done(err);
+                                                        }
+
+                                                        (res.body).should.have.property('children');
+                                                        (res.body.children).should.have.length(2);
+                                                        (res.body.children[0]).should.have.property('username');
+                                                        (res.body.children[0].username).should.be.exactly(childCredentials1.username);
+                                                        (res.body.children[1]).should.have.property('username');
+                                                        (res.body.children[1].username).should.be.exactly(childCredentials2.username);
+
+                                                        done();
+                                                    });
+                                            });
+                                    });
+                            });
+                    });
+            });
+    });
+
+    it('should be able to logout/login after adding a child -- Pivotal Tracker #107098296, commit f7ec543', function(done){
+        agent.post('/api/auth/signup').
+            send(parentCredentials).
+            expect(200).
+            end(function(err, res){
+                if (err) {
+                    return done(err);
+                }
+
+                (res.body.username).should.match(parentCredentials.username);
+
+
+                parentCredentials = {
+                    username: parentCredentials.username,
+                    password: parentCredentials.password
+                };
+                agent.post('/api/auth/signin').
+                    send(parentCredentials).
+                    expect(200).
+                    end(function(err, res){
+                        if (err) {
+                            return done(err);
+                        }
+
+                        (res.body.username).should.match(parentCredentials.username);
+
+
+                        agent.post('/api/auth/signupchild').
+                            send(childCredentials1).
+                            expect(200).
+                            end(function(err, res){
+                                if (err) {
+                                    return done(err);
+                                }
+
+                                (res.body).should.have.property('message');
+                                (res.body.message).should.be.exactly('Added a child!');
+
+                                agent.get('/api/users/me').
+                                    expect(200).
+                                    end(function(err, res){
+                                        if (err) {
+                                            return done(err);
+                                        }
+
+                                        (res.body).should.have.property('children');
+                                        (res.body.children).should.have.length(1);
+                                        (res.body.children[0]).should.have.property('username');
+                                        (res.body.children[0].username).should.be.exactly(childCredentials1.username);
+
+                                        agent.get('/api/auth/signout').
+                                            expect(302).
+                                            end(function(err, res) {
+                                                if (err) {
+                                                    return done(err);
+                                                }
+
+                                                agent.post('/api/auth/signin').
+                                                    send({
+                                                        username: parentCredentials.username,
+                                                        password: parentCredentials.password
+                                                    }).
+                                                    expect(200).
+                                                    end(function (err, res) {
+                                                        if (err) {
+                                                            return done(err);
+                                                        }
+
+                                                        (res.body.username).should.match(parentCredentials.username);
+
+                                                        done();
+                                                    });
+                                            });
+                                    });
+                            });
+                    });
+            });
+    });
+
 
     afterEach(function(done){
         agent.post('/api/auth/signout').
