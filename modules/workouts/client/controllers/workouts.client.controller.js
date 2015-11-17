@@ -141,8 +141,8 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 		});
 
 		$scope.updateLocation = function() {
-			console.log("location = ");
-			console.log($scope.position);
+			// console.log("location = ");
+			// console.log($scope.position);
 
 			$http.post('/api/auth/location', $scope.position).success(function(response) {
 				$scope.successMsg = response.message;

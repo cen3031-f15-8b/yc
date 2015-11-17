@@ -265,7 +265,7 @@ exports.removeOAuthProvider = function(req, res, next) {
  * Update user location
  */
  exports.updateLocation = function (req, res) {
-	console.log(req);
+	// console.log(req);
 	// Init Variables
 	var user = req.user;
 
