@@ -70,6 +70,11 @@ var UserSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	}],
+	/* last-known user location */
+	lastKnownLocation: {
+		type: Schema.Types.Mixed,
+		default: null
+	},
 	salt: {
 		type: String
 	},

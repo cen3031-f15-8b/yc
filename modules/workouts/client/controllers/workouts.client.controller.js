@@ -1,8 +1,8 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout',
-	function($scope, $window, $stateParams, $location, Authentication, Workouts, $timeout ) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$http', '$stateParams', '$location', 'Users', 'Authentication', 'Workouts', '$timeout',
+	function($scope, $window, $http, $stateParams, $location, Users, Authentication, Workouts, $timeout ) {
 		$scope.authentication = Authentication;
 
 		$scope.check = false;
@@ -135,9 +135,21 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 		$window.navigator.geolocation.getCurrentPosition(function(position) {
 			var lat = position.coords.latitude;
 			var lng = position.coords.longitude;
+			$scope.position = position;
 
-			console.log(position);
+			$scope.updateLocation();
 		});
+
+		$scope.updateLocation = function() {
+			console.log("location = ");
+			console.log($scope.position);
+
+			$http.post('/api/auth/location', $scope.position).success(function(response) {
+				$scope.successMsg = response.message;
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
 
 	}
 
