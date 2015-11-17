@@ -65,6 +65,7 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
 	},
+	/* for parent - keep track of the children for that parent */
 	children:[{
 		type: Schema.ObjectId,
 		ref: 'User'
@@ -100,9 +101,9 @@ var UserSchema = new Schema({
 	resetPasswordToken: {
 		type: String
 	},
-  	resetPasswordExpires: {
-  		type: Date
-  	}
+	resetPasswordExpires: {
+		type: Date
+	}
 });
 
 /**
