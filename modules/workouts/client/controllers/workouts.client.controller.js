@@ -13,27 +13,27 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 		var stopped;
 
 		$scope.toggleCustom = function(){
-		if( $scope.counter > 0 ){
-			$scope.check = true;
-			$scope.cdstring = ':' + $scope.counter;
-			$timeout(function(){
-				console.log( $scope.cdstring);
-				$scope.counter--;
-				$scope.toggleCustom();
-			}, 1000);
-		}
-		else
-		{
-			$scope.cdstring = 'GO!';
-			$timeout(function(){
-				console.log($scope.cdstring);}, 1000);
-			$timeout(function(){
-				$scope.counter = 2;
-				$scope.check = false;
-				$scope.timer();
-			}, 1000);
-		}
-	};
+			if( $scope.counter > 0 ){
+				$scope.check = true;
+				$scope.cdstring = ':' + $scope.counter;
+				$timeout(function(){
+					console.log( $scope.cdstring);
+					$scope.counter--;
+					$scope.toggleCustom();
+				}, 1000);
+			}
+			else
+			{
+				$scope.cdstring = 'GO!';
+				$timeout(function(){
+					console.log($scope.cdstring);}, 1000);
+				$timeout(function(){
+					$scope.counter = 2;
+					$scope.check = false;
+					$scope.timer();
+				}, 1000);
+			}
+		};
 
 		$scope.timer = function(){
 			if( $scope.tCounter2 > 0 ){
