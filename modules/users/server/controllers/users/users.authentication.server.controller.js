@@ -54,7 +54,7 @@ exports.signupChild = function(req, res) {
 		});
 	}
 
-	if (req.user.roles[0] != 'parent') { // If not a parent
+	if (req.user.roles[0] !== 'parent') { // If not a parent
 		res.status(400).send({
 			message: 'Cannot create child account if you are not a parent!'
 		});
