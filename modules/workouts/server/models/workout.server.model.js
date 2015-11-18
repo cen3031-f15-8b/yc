@@ -34,7 +34,12 @@ var mongoose = require('mongoose'),
  	},
  	difficulty: {
  		type: Number
- 	}
+ 	},
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	}
+ 	
  });
 
  /*Adrian's Code End Here */

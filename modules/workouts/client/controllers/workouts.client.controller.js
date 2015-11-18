@@ -7,12 +7,14 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 
 		$scope.check = false;
 		$scope.counter = 2;
-		$scope.tCounter1 = 12;
-		$scope.tCounter2 = 0;
+		$scope.tCounter1;
+		$scope.tCounter2;
 		$scope.go = 'GO!';
 		var stopped;
 
 		$scope.toggleCustom = function(){
+			$scope.tCounter1 = $scope.workout.minutes;
+			$scope.tCounter2 = $scope.workout.seconds;
 		if( $scope.counter > 0 ){
 			$scope.check = true;
 			$scope.cdstring = ':' + $scope.counter;
@@ -87,6 +89,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 				difficulty: this.difficulty
 			});
 
+
 			// Redirect after save
 			workout.$save(function(response) {
 				$location.path('workouts/' + response._id);
@@ -141,6 +144,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 			$scope.workout = Workouts.get({
 				workoutId: $stateParams.workoutId
 			});
+
 		};
 
 
