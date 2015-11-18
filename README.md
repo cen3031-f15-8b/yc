@@ -25,6 +25,8 @@ In addition, we are using Google’s Maps API in order to support the necessary 
 
 # Our Progress
 Though we have not yet deployed our product, we are documenting our progress as we continue implementation. Take a peek at a few screenshots of our application below.  
+
+
 ![Sign In Page](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/SignIn.png)
 
 ![Sign Up Page](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/SignUp.png)
