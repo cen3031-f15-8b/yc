@@ -23,13 +23,10 @@ angular.module('user-feeds').config(['$stateProvider',
 			templateUrl: 'modules/user-feeds/views/previous-plan.client.view.html'
 		}).
 		state('user-feeds.category-plan', {
-			url: '/lib/category',
-			templateUrl: 'modules/user-feeds/views/category-plan-user-feed.client.view.html'
+			url: '/plans',
+			templateUrl: 'modules/plans/views/category-plan.client.view.html'
 		}).
-		state('user-feeds.whole-body-plan', {
-			url: '/lib/category/whole-body',
-			templateUrl: 'modules/user-feeds/views/whole-body-plans.client.view.html'
-		}).
+
 		state('user-feeds.single-workout', {
 			url: '/lib/single-workout',
 			templateUrl: 'modules/user-feeds/views/single-workout.client.view.html'
@@ -41,6 +38,14 @@ angular.module('user-feeds').config(['$stateProvider',
 		state('user-feeds.whole-body-workout', {
 			url: '/lib/single-workout/category/whole-body',
 			templateUrl: 'modules/user-feeds/views/whole-body-workouts.client.view.html'
+		}).
+		state('user-feeds.upper-body-workout', {
+			url: '/lib/single-workout/category/upper-body',
+			templateUrl: 'modules/user-feeds/views/upper-body-workouts.client.view.html'
+		}).
+		state('user-feeds.lower-body-workout', {
+			url: '/lib/single-workout/category/lower-body',
+			templateUrl: 'modules/user-feeds/views/lower-body-workouts.client.view.html'
 		}).
 		state('user-feeds.todays-workout', {
 			url: '/lib/single-workout/todays-workout',

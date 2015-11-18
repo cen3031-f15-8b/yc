@@ -1,5 +1,6 @@
 <div class="container" data-ng-controller="HeaderController">
 	<div class="navbar-header">
+		<button class="navbar" type="button" value="Back" data-ng-click="goBack()"><p>Back</p></button>
 		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
 			<span class="sr-only">Toggle navigation</span>
 			<span class="icon-bar"></span>
@@ -48,9 +49,9 @@
 					<li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'">
 						<a data-ui-sref="settings.password">Change Password</a>
 					</li>
-					<li data-ui-sref-active="active">
+					<!-- <li data-ui-sref-active="active">
 						<a data-ui-sref="settings.accounts">Manage Social Accounts</a>
-					</li>
+					</li> -->
 					<li class="divider"></li>
 					<li>
 						<a href="/api/auth/signout" target="_self">Signout</a>

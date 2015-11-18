@@ -4,6 +4,9 @@
 angular.module('parents').controller('ParentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Parents',
 	function($scope, $stateParams, $location, Authentication, Parents ) {
 		$scope.authentication = Authentication;
+		$scope.children = Authentication.user.children;
+
+		console.log($scope.children);
 
 		// Create new Parent
 		$scope.create = function() {
@@ -57,7 +60,7 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 
 		// Find existing Parent
 		$scope.findOne = function() {
-			$scope.parent = Parents.get({ 
+			$scope.parent = Parents.get({
 				parentId: $stateParams.parentId
 			});
 		};

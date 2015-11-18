@@ -9,6 +9,7 @@
 		</div>
 	</div>
 
+	<!--Dynamic Data - Binding for Children
 	<div class="row">
 		<div class ="col-sm-12">
 			<div class="list-group">
@@ -21,6 +22,24 @@
 					<h4>Jane Doe</h4>
 					<p>View Activity</p>
 				</a>
+			</div>
+		</div>
+	</div>
+	-->
+	<div class="row">
+		<div class ="col-sm-12">
+			<div class="list-group">
+				<h3 class="list-group-item heading">My Children</h3>
+				<div class="list-group-item" ng-if="children.length === 0">
+		      <h5>No children registered.</h5>
+		    </div>
+		    <div ng-if="children.length > 0">
+					<li class="list-group-item" ng-repeat="child in children">
+						<h4>{{ child.displayName }}</h4>
+						<!-- <p>View Activity</p> -->
+					</li>
+		    </div>
+
 			</div>
 		</div>
 	</div>
