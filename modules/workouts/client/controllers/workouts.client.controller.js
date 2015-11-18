@@ -133,18 +133,21 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 
 		// Get current location
 		$window.navigator.geolocation.getCurrentPosition(function(position) {
-			var lat = position.coords.latitude;
-			var lng = position.coords.longitude;
-			$scope.position = position;
+
+			$scope.position = {
+				latitude: position.coords.latitude,
+				longitude: position.coords.longitude,
+				timestamp: position.timestamp
+			};
 
 			$scope.updateLocation();
 		});
 
 		$scope.updateLocation = function() {
-			// console.log("location = ");
-			// console.log($scope.position);
+			console.log("location = ");
+			console.log($scope.position);
 
-			$http.post('/api/auth/location', $scope.position).success(function(response) {
+			$http.post('/api/auth/location', $scope.position).success(function(response) { //FIXME: is this required? do we care about the response?
 				$scope.successMsg = response.message;
 			}).error(function(response) {
 				$scope.error = response.message;
