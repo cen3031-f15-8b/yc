@@ -265,17 +265,11 @@ exports.removeOAuthProvider = function(req, res, next) {
  * Update user location
  */
  exports.updateLocation = function (req, res) {
-	// console.log(req);
 	// Init Variables
 	var user = req.user;
 
-	// For security measurement we remove the roles from the req.body object
-	delete req.body.roles;
-
 	if (user) {
-		// Merge existing user
-		user = _.extend(user, req.body);
-		// user.lastKnownLocation = ;
+		user.lastKnownLocation = req.body;
 
 		user.save(function (err) {
 			if (err) {
@@ -283,13 +277,9 @@ exports.removeOAuthProvider = function(req, res, next) {
 					message: errorHandler.getErrorMessage(err)
 				});
 			} else {
-				req.login(user, function (err) {
-					if (err) {
-						res.status(400).send(err);
-					} else {
-						res.json(user);
-					}
-				});
+				return res.status(200).send({
+					message: 'Updated location!'
+				})
 			}
 		});
 	} else {
