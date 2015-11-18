@@ -218,7 +218,7 @@ describe('signupChild() method -- signup new child user and link to parent', fun
                                         });
                                 });
                         });
-                    })
+                    });
                 });
         });
     });
@@ -462,4 +462,3 @@ describe('signupChild() method -- signup new child user and link to parent', fun
     });
 
 });
-
