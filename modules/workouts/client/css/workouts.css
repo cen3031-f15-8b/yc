@@ -29,16 +29,21 @@
     	left:0;
     	right:0;
     	background-color:black;
-    	opacity:0.8;
+    	opacity:0.5;
     	display:block !important;
     }
     .countdown-overlay h1 { font-size:72px;color:red; position:fixed; width:100%; text-align:center; top:40%;}
-
 
     .start-btn{
     	width:100%;
     	padding: 0 12px;
     	background-color: white;
+    }
+    .stop-btn{
+        width:100%;
+        padding: 0 12px;
+        background-color: red;
+        color: white;
     }
 
     @media (max-width:320px)
