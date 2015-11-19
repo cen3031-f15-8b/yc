@@ -1,35 +1,39 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout',
-	function($scope, $window, $stateParams, $location, Authentication, Workouts, $timeout ) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout', '$state', '$window',
+	function($scope, $stateParams, $location, Authentication, Workouts, $timeout, $state, $window) {
 		$scope.authentication = Authentication;
 
 		$scope.check = false;
 		$scope.counter = 2;
 		$scope.tCounter1 = 12;
 		$scope.tCounter2 = 0;
-		$scope.go = 'GO!';
-		var stopped;
+		$scope.starttxt = 'START';
+		$scope.go = false;
+		$scope.stopped = true;
 
 		$scope.toggleCustom = function(){
 		if( $scope.counter > 0 ){
 			$scope.check = true;
-			$scope.cdstring = ':' + $scope.counter;
+			$scope.go = true;
+			$scope.stopped = false;
+			$scope.gostring = ':' + $scope.counter;
 			$timeout(function(){
-				console.log( $scope.cdstring);
+				console.log( $scope.gostring);
 				$scope.counter--;
 				$scope.toggleCustom();
 			}, 1000);
 		}
 		else
 		{
-			$scope.cdstring = 'GO!';
+			$scope.gostring = 'GO!';
 			$timeout(function(){
-				console.log($scope.cdstring);}, 1000);
+				console.log($scope.gostring);}, 1000);
 			$timeout(function(){
 				$scope.counter = 2;
 				$scope.check = false;
+				$scope.go = false;
 				$scope.timer();
 			}, 1000);
 		}
@@ -38,6 +42,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 		$scope.timer = function(){
 			if( $scope.tCounter2 > 0 ){
 				$scope.check = true;
+				$scope.stopped = false;
 				if($scope.tCounter2 < 10) {
 					$scope.cdstring = $scope.tCounter1 + ':' + '0' + $scope.tCounter2;
 				}
@@ -70,6 +75,29 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 					$scope.tCounter2 = 0;
 					$scope.check = false;}, 1000);
 			}
+		};
+
+		// Stop the timer and reload the page
+		$scope.stopTimer = function() {
+			// Set 'stopped' to true 
+			$scope.stopped = true;
+			// should stop the timer? **BUGS**
+			$timeout(function() {
+				$scope.check = false;
+				$scope.tCounter1 = 0;
+				$scope.tCounter2 = 0;
+			});
+			// log on console 
+			$timeout(function(){
+					console.log('STOP');
+			});
+			// should reload the page when clicked
+			var dstPath = '/workouts';
+		    if ($location.path() === dstPath) {
+		        $state.reload();
+		    } else {
+		        $location.path(dstPath);
+		    }
 		};
 
 
