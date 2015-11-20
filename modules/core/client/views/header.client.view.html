@@ -1,6 +1,9 @@
-<div class="container" data-ng-controller="HeaderController">
+<div class="container" data-ng-controller="HeaderController" data-ng-show="authentication.user">
 	<div class="navbar-header">
-		<button class="navbar-button" type="button" value="Back" data-ng-click="goBack()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+		<button class="navbar-button-back" type="button" value="Back" data-ng-click="goBack()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+
+		<button class="navbar-button" type="button" value="Home" data-ui-sref = "home"><span class="glyphicon glyphicon-home"></span></button>
+
 		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()"
 		data-ng-show="authentication.user">
 			<span class="sr-only">Toggle navigation</span>

@@ -111,13 +111,23 @@ exports.signin = function(req, res, next) {
 			user.password = undefined;
 			user.salt = undefined;
 
-			req.login(user, function(err) {
+			// Populate children object on signin too, not just page load -- fixes Pivotal Tracker bug #108464978
+			User.findOne({_id: user._id}).populate('children', '-password -salt').exec(function(err, dbUser){
 				if (err) {
 					res.status(400).send(err);
 				} else {
-					res.json(user);
+					user = _.extend(user, dbUser);
+
+					req.login(user, function(err) {
+						if (err) {
+							res.status(400).send(err);
+						} else {
+							res.json(user);
+						}
+					});
 				}
 			});
+
 		}
 	})(req, res, next);
 };
