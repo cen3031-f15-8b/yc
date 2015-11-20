@@ -16,7 +16,7 @@ var app, agent, credentials, user, plan;
 /**
  * Plan routes tests
  */
-describe('Plan CRUD tests', function() {
+xdescribe('Plan CRUD tests', function() {
 	before(function(done) {
 		// Get application
 		app = express.init(mongoose);

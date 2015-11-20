@@ -16,7 +16,7 @@ var app, agent, credentials, user, userFeed;
 /**
  * User feed routes tests
  */
-describe('User feed CRUD tests', function() {
+xdescribe('User feed CRUD tests', function() {
 	before(function(done) {
 		// Get application
 		app = express.init(mongoose);
