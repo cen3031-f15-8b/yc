@@ -2,7 +2,7 @@
 
 (function() {
 	// User feeds Controller Spec
-	describe('User feeds Controller Tests', function() {
+	xdescribe('User feeds Controller Tests', function() {
 		// Initialize global variables
 		var UserFeedsController,
 		scope,
