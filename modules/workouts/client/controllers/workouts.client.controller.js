@@ -60,12 +60,14 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 						$scope.$apply();
 
 						if ($scope.timerFSM.counter === -1) {
-							clearInterval($scope.timerFSM.intervalHandle); // stop timer
 							$scope.timerFSM.finish();
 						} else {
 							$scope.timerFSM.counter--;
 						}
 					}, 1000);
+				},
+				onleaverunning: function(event, from, to) { // can leave running state via finishing or canceling
+					clearInterval($scope.timerFSM.intervalHandle); // stop timer
 				}
 			}
 		});
