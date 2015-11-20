@@ -16,7 +16,7 @@ var user, challenge;
 /**
  * Unit tests
  */
-describe('Challenge Model Unit Tests:', function() {
+xdescribe('Challenge Model Unit Tests:', function() {
 	beforeEach(function(done) {
 		user = new User({
 			firstName: 'Full',

@@ -16,7 +16,7 @@ var user, plan;
 /**
  * Unit tests
  */
-describe('Plan Model Unit Tests:', function() {
+xdescribe('Plan Model Unit Tests:', function() {
 	beforeEach(function(done) {
 		user = new User({
 			firstName: 'Full',
