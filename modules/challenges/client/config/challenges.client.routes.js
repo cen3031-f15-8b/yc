@@ -10,6 +10,10 @@ angular.module('challenges').config(['$stateProvider',
 			url: '/challenges',
 			template: '<ui-view/>'
 		}).
+		state('challenges.home', {
+			url: '/challenges/home',
+			templateUrl: 'modules/challenges/views/challenges-home.client.view.html'
+		}).
 		state('challenges.list', {
 			url: '',
 			templateUrl: 'modules/challenges/views/list-challenges.client.view.html'
