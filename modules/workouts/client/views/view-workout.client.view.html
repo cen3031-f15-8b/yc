@@ -57,10 +57,7 @@
                 <div class="col-xs-5">
                     <h4><strong>Equipment</strong></h4>
                     <ul>
-                    	<li>{{ workout.equipment }}</lie>
-                        <li>Medicine Ball</li>
-                        <li>Two 10lb weights</li>
-                        <li>Motivation</li>
+                    	<li ng-repeat="e in workout.equipment">{{ e }}</li>
                     </ul>
                 </div>
             </div>
