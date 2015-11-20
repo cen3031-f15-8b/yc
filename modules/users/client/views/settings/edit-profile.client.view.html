@@ -10,7 +10,7 @@
 					<label for="lastName">Last Name</label>
 					<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name">
 				</div>
-				<div class="form-group">
+				<div class="form-group" data-ng-show="user.roles[0] !== 'child'">
 					<label for="email">Email</label>
 					<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
 				</div>

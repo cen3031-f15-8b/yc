@@ -25,7 +25,7 @@ exports.signup = function(req, res) {
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
 
-	// Then save the user 
+	// Then save the user
 	user.save(function(err) {
 		if (err) {
 			return res.status(400).send({
@@ -47,6 +47,58 @@ exports.signup = function(req, res) {
 	});
 };
 
+exports.signupChild = function(req, res) {
+	if (!req.user) {
+		return res.status(400).send({
+			message: 'Must be logged in to create child!'
+		});
+	}
+	if (req.user.roles[0] !== 'parent') { // If not a parent
+		return res.status(400).send({
+			message: 'Cannot create child account if you are not a parent!'
+		});
+	}
+
+	// For security measurement we remove the roles from the req.body object
+	delete req.body.roles;
+
+	// Init Variables
+	var user = new User(req.body);
+	var message = null;
+
+	// Add missing user fields
+	user.provider = 'local';
+	user.displayName = user.firstName + ' ' + user.lastName;
+	user.email = 'nobody@example.com';
+
+	user.roles[0] = 'child';
+
+	// Then save the user
+	user.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			User.findOne({username: req.user.username}).exec(function(err, parentUser) {
+				parentUser.children.push(user);
+				parentUser.save(function(err){
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					}
+				});
+
+			});
+
+			res.status(200).send({
+				message: 'Added a child!'
+			});
+		}
+	});
+};
+
 /**
  * Signin after passport authentication
  */
@@ -59,13 +111,23 @@ exports.signin = function(req, res, next) {
 			user.password = undefined;
 			user.salt = undefined;
 
-			req.login(user, function(err) {
+			// Populate children object on signin too, not just page load -- fixes Pivotal Tracker bug #108464978
+			User.findOne({_id: user._id}).populate('children', '-password -salt').exec(function(err, dbUser){
 				if (err) {
 					res.status(400).send(err);
 				} else {
-					res.json(user);
+					user = _.extend(user, dbUser);
+
+					req.login(user, function(err) {
+						if (err) {
+							res.status(400).send(err);
+						} else {
+							res.json(user);
+						}
+					});
 				}
 			});
+
 		}
 	})(req, res, next);
 };

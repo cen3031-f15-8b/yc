@@ -1,9 +1,4 @@
- <head>
- 	<link rel="stylesheet" href="../css/userfeeds.css">
- </head>
-
  <section data-ng-controller="UserFeedsController">
- 	<body>
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="img">
@@ -26,7 +21,7 @@
 				</div>
 
 				<div class="list-group">
-					<a href="#" class="list-group-item">
+					<a data-ui-sref="user-feeds.upper-body-workout" class="list-group-item">
 					<h1>UPPER BODY</h1>
 					<p> Arms, shoulders, and upper back </p>
 					</a>
@@ -41,14 +36,11 @@
 				</div>
 
 				<div class="list-group">
-					<a href="#" class="list-group-item">
+					<a data-ui-sref="user-feeds.lower-body-workout" class="list-group-item">
 					<h1>LOWER BODY</h1>
 					<p> Quadriceps, calves, lower back</p>
 					</a>
 				</div>
 			</div>
 		</div>
-
-	</body>
-
 </section>

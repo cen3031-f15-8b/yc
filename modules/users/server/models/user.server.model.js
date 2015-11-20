@@ -5,7 +5,8 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
-	crypto = require('crypto');
+	crypto = require('crypto'),
+	validator = require('validator');
 
 /**
  * A Validation function for local strategy properties
@@ -37,6 +38,11 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
 	},
+	age: {
+		type: Number,
+		default: 0,
+		validate: [validateLocalStrategyProperty, 'Please fill in the age']
+	},
 	displayName: {
 		type: String,
 		trim: true
@@ -59,6 +65,11 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
 	},
+	/* for parent - keep track of the children for that parent */
+	children:[{
+		type: Schema.ObjectId,
+		ref: 'User'
+	}],
 	salt: {
 		type: String
 	},
@@ -75,9 +86,9 @@ var UserSchema = new Schema({
 	roles: {
 		type: [{
 			type: String,
-			enum: ['user', 'admin']
+			enum: ['user', 'admin', 'parent', 'child']
 		}],
-		default: ['user']
+		default: ['parent']
 	},
 	updated: {
 		type: Date
@@ -90,16 +101,17 @@ var UserSchema = new Schema({
 	resetPasswordToken: {
 		type: String
 	},
-  	resetPasswordExpires: {
-  		type: Date
-  	}
+	resetPasswordExpires: {
+		type: Date
+	}
 });
 
 /**
  * Hook a pre save method to hash the password
  */
 UserSchema.pre('save', function(next) {
-	if (this.password && this.password.length > 6) {
+	// Check to make sure password isn't already base64 encoded before hashing and encoding again -- XXX: assumes user won't use base64 encoded string
+	if (this.password && this.password.length > 6 && !validator.isBase64(this.password)) {
 		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
 		this.password = this.hashPassword(this.password);
 	}

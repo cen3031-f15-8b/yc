@@ -23,9 +23,6 @@ var mongoose = require('mongoose'),
  	exercises: {
  		type: [String]
  	},
- 	minutes: {
- 		type: Number
- 	},
  	seconds: {
  		type: Number
  	},
