@@ -47,10 +47,6 @@ angular.module('user-feeds').config(['$stateProvider',
 			url: '/lib/single-workout/category/lower-body',
 			templateUrl: 'modules/user-feeds/views/lower-body-workouts.client.view.html'
 		}).
-		state('user-feeds.todays-workout', {
-			url: '/lib/single-workout/todays-workout',
-			templateUrl: 'module/user-feeds/views/todays-workout.client.view.html'
-		}).
 		state('workout', {
 			url: '/workout',
 			templateUrl: 'modules/workouts/views/list-workouts.client.view.html'
