@@ -15,7 +15,7 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
 				'public/lib/angular-file-upload/angular-file-upload.min.js',
-				'public/lib/javascript-state-machine/state-machine.js',
+				'public/lib/javascript-state-machine/state-machine.min.js',
 				//'public/lib/sprintf/src/angular-sprintf.js', //TODO: should I use angular service or raw sprintf?
 				'public/lib/sprintf/src/sprintf.js'
 			]
