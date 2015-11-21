@@ -4,74 +4,78 @@
 angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$http', '$stateParams', '$location', 'Users', 'Authentication', 'Workouts', '$timeout',
 	function($scope, $window, $http, $stateParams, $location, Users, Authentication, Workouts, $timeout ) {
 		$scope.authentication = Authentication;
-
-		$scope.check = false;
-		$scope.counter = 2;
-		$scope.tCounter1 = 12;
-		$scope.tCounter2 = 0;
-		$scope.go = 'GO!';
-		var stopped;
-
-		$scope.toggleCustom = function(){
-			if( $scope.counter > 0 ){
-				$scope.check = true;
-				$scope.cdstring = ':' + $scope.counter;
-				$timeout(function(){
-					console.log( $scope.cdstring);
-					$scope.counter--;
-					$scope.toggleCustom();
-				}, 1000);
-			}
-			else
-			{
-				$scope.cdstring = 'GO!';
-				$timeout(function(){
-					console.log($scope.cdstring);}, 1000);
-				$timeout(function(){
-					$scope.counter = 2;
-					$scope.check = false;
-					$scope.timer();
-				}, 1000);
-			}
+		
+		$scope.convertSeconds = function(seconds){
+			return sprintf('%d:%02d', Math.floor(seconds / 60), (seconds % 60));
 		};
 
-		$scope.timer = function(){
-			if( $scope.tCounter2 > 0 ){
-				$scope.check = true;
-				if($scope.tCounter2 < 10) {
-					$scope.cdstring = $scope.tCounter1 + ':' + '0' + $scope.tCounter2;
-				}
-				else {
-					$scope.cdstring = $scope.tCounter1 + ':' + $scope.tCounter2;
-				}
-				$timeout(function(){
-					console.log( $scope.cdstring);
-					$scope.tCounter2--;
-					$scope.timer();
-				}, 1000);
-			}
-			else if( $scope.tCounter1 > 0 ){
-				$scope.check = true;
-				$scope.cdstring = $scope.tCounter1 + ':' + '00';
-				$timeout(function(){
-					console.log( $scope.cdstring);
-					$scope.tCounter1--;
-					$scope.tCounter2 = 59;
-					$scope.timer();
-				}, 1000);
-			}
-			else
-			{
-				$scope.cdstring = 'DONE';
-				$timeout(function(){
-					console.log($scope.cdstring);}, 1000);
-				$timeout(function(){
-					$scope.tCounter1 = 12;
-					$scope.tCounter2 = 0;
-					$scope.check = false;}, 1000);
-			}
-		};
+		$scope.timerFSM = StateMachine.create({
+			// states: idle, countdown, running, finished
+			//     start begins countdown, on countdown finish run main timer, can stop before end or will finish when complete time elapses
+			initial: 'idle',
+			events: [
+				{name: 'start',  from: 'idle',      to: 'countdown'},
+				{name: 'run',    from: 'countdown', to: 'running'},
+				{name: 'cancel', from: 'running',   to: 'idle'},
+				{name: 'finish', from: 'running',   to: 'finished'}
+			],
+			callbacks: {
+				onenteridle: function(event, from, to) {
+					$scope.starttxt = 'START';
+				},
+				onstart: function(event, from, to){
+					$scope.timerFSM.countdownCounter = 2;
+					$scope.timerFSM.counter = 60;
+					$scope.gostring = $scope.convertSeconds($scope.timerFSM.countdownCounter--);
+				},
+				onentercountdown: function(event, from, to){
+					$scope.timerFSM.intervalHandle = setInterval(function(){
 
+						if ($scope.timerFSM.countdownCounter > 0) {
+							$scope.gostring = $scope.convertSeconds($scope.timerFSM.countdownCounter);
+						} else {
+							$scope.gostring = 'GO!';
+						}
+						$scope.$apply();
+
+						if ($scope.timerFSM.countdownCounter === -1) {
+							clearInterval($scope.timerFSM.intervalHandle); // stop timer
+							$scope.timerFSM.run();
+						} else {
+							$scope.timerFSM.countdownCounter--;
+						}
+					}, 1000);
+				},
+				onrun: function(event, from, to) {
+					$scope.cdstring = $scope.convertSeconds($scope.timerFSM.counter--);
+					$scope.$apply();
+				},
+				onenterrunning: function(event, from, to){
+					$scope.timerFSM.intervalHandle = setInterval(function(){
+						if ($scope.timerFSM.counter > 0) {
+							$scope.cdstring = $scope.convertSeconds($scope.timerFSM.counter);
+						} else {
+							$scope.cdstring = 'DONE';
+						}
+						$scope.$apply();
+
+						if ($scope.timerFSM.counter === -1) {
+							$scope.timerFSM.finish();
+						} else {
+							$scope.timerFSM.counter--;
+						}
+					}, 1000);
+				},
+				onleaverunning: function(event, from, to) { // can leave running state via finishing or canceling
+					clearInterval($scope.timerFSM.intervalHandle); // stop timer
+				}
+			}
+		});
+
+		$scope.timerFSM.countdownCounter = 2; // TODO: make these dynamic
+		$scope.timerFSM.counter = 60;
+		$scope.timerFSM.intervalHandle = undefined;
+// >>>>>>> 5adcd9625bdd1dd909b534fe69f47599b03821cb
 
 
 		// Create new Workout
@@ -144,8 +148,6 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 		});
 
 		$scope.updateLocation = function() {
-			console.log("location = ");
-			console.log($scope.position);
 
 			$http.post('/api/auth/location', $scope.position).success(function(response) { //FIXME: is this required? do we care about the response?
 				$scope.successMsg = response.message;

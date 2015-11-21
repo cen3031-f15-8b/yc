@@ -2,7 +2,7 @@
 
 (function() {
 	// Plans Controller Spec
-	describe('Plans Controller Tests', function() {
+	xdescribe('Plans Controller Tests', function() {
 		// Initialize global variables
 		var PlansController,
 		scope,
