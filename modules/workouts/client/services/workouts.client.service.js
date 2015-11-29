@@ -11,3 +11,14 @@ angular.module('workouts').factory('Workouts', ['$resource',
 		});
 	}
 ]);
+
+angular.module('workouts').factory('WorkoutResults', ['$resource',
+	function($resource) {
+		return $resource('api/workouts/results/:workoutResultId', { workoutResultId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);

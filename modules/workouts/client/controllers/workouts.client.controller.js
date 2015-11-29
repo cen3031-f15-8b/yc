@@ -1,8 +1,8 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', '$timeout', '$state', '$window',
-	function($scope, $stateParams, $location, Authentication, Workouts, $timeout, $state, $window) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', 'WorkoutResults', '$timeout', '$state', '$window',
+	function($scope, $stateParams, $location, Authentication, Workouts, WorkoutResults, $timeout, $state, $window) {
 		$scope.authentication = Authentication;
 
 		$scope.convertSeconds = function(seconds){
@@ -17,7 +17,8 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 				{name: 'start',  from: 'idle',      to: 'countdown'},
 				{name: 'run',    from: 'countdown', to: 'running'},
 				{name: 'cancel', from: 'running',   to: 'idle'},
-				{name: 'finish', from: 'running',   to: 'finished'}
+				{name: 'finish', from: 'running',   to: 'finished'},
+				{name: 'submit', from: 'finished',  to: 'idle'}
 			],
 			callbacks: {
 				onenteridle: function(event, from, to) {
@@ -68,6 +69,10 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 				},
 				onleaverunning: function(event, from, to) { // can leave running state via finishing or canceling
 					clearInterval($scope.timerFSM.intervalHandle); // stop timer
+
+				},
+				onfinish: function(event, from, to) {
+					$scope.$apply();
 				}
 			}
 		});
@@ -154,6 +159,21 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 
 			console.log(position);
 		});
+
+		$scope.submitResult = function(){
+			var result = new WorkoutResults({
+				workout: $scope.workout._id,
+				user: Authentication.user._id,
+				result: $scope.result
+			});
+
+			result.$save(function(response){
+				$scope.result = undefined;
+				$scope.timerFSM.submit();
+			}, function(errorResponse){
+				// TODO/XXX: handle error
+			});
+		};
 
 	}
 
