@@ -30,13 +30,8 @@ var mongoose = require('mongoose'),
  		type: String
  	},
  	difficulty: {
- 		type: Number
- 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
+		type: Number
 	}
- 	
  });
 
  /*Adrian's Code End Here */

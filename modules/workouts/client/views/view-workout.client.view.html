@@ -66,11 +66,9 @@
             <div class="col-xs-12">
                 <div class="block-content">
                 <div class="col-xs-6">
-                    <h4><strong>Excercises</strong></h4>
+                    <h4><strong>Exercises</strong></h4>
                     <ul>
-                            <li><strong>25m</strong> Lorum Ipsum</li>
-                            <li><strong>5</strong> Vel Musicius</li>
-                            <li><strong>10</strong> Deserunt</li>
+                            <li ng-repeat="e in workout.exercises">{{ e }}</li>
                     </ul>
                 </div>
             </div>
@@ -81,8 +79,8 @@
     <!--User Controls-->
     <div class="row" style="margin-bottom:15px;">
     <!--POPUP countdown to START-->
-        <div class = "container" ng-show="timerFSM.is('countdown')">
-            <div class = "overlay-hidden countdown-overlay">
+        <div class="container" ng-show="timerFSM.is('countdown')">
+            <div class="overlay-hidden countdown-overlay">
             <h1 ng-bind="gostring"></h1>
             </div>
         </div>
@@ -98,12 +96,5 @@
         </div>
 
     </div>
-<<<<<<< HEAD
 
-
-=======
-    <div class="overlay-hidden" ng-class="{'countdown-overlay' : check}">
-        <h1 ng-bind="cdstring"></h1>
-    </div>
->>>>>>> ffcd0572759b7f092a701bbea6658ca5d529b3fb
 </section>

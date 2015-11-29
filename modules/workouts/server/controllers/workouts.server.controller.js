@@ -14,7 +14,6 @@ var _ = require('lodash'),
  */
 exports.create = function(req, res) {
 	var workout = new Workout(req.body);
-	workout.user = req.user;
 
 	workout.save(function(err) {
 		if (err) {

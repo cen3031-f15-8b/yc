@@ -84,7 +84,6 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 				name: this.name,
 				equipment: this.equipment,
 				exercises: this.exercises,
-				minutes: this.minutes,
 				seconds: this.seconds,
 				type: this.type,
 				difficulty: this.difficulty
