@@ -75,8 +75,8 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 
 				if (lastKnownLocation) {
 					defaultCenter = false;
-					sumLat += lastKnownLocation.latitude;
-					sumLong += lastKnownLocation.longitude;
+					sumLat += lastKnownLocation.coordinates[1];
+					sumLong += lastKnownLocation.coordinates[0];
 					locationsCount += 1;
 				}
 			}
@@ -106,8 +106,8 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 				var lastKnownLocation = $scope.children[i].lastKnownLocation;
 
 				if (lastKnownLocation) {
-					var newLat = lastKnownLocation.latitude;
-					var newLong = lastKnownLocation.longitude;
+					var newLat = lastKnownLocation.coordinates[1];
+					var newLong = lastKnownLocation.coordinates[0];
 					var latLong = {lat: newLat, lng: newLong};
 					var marker = new google.maps.Marker({
 						position: latLong,
