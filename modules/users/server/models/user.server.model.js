@@ -77,7 +77,7 @@ var UserSchema = new Schema({
 			default: 'Point'
 		},
 		coordinates: {
-			type: [Number],
+			type: [Number]
 
 		},
 		timestamp: {
