@@ -80,7 +80,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 		// Create new Workout
 		$scope.create = function() {
 			// Create new Workout object
-			var workout = new Workouts ({
+			var workout = new Workouts({
 				name: this.name,
 				equipment: this.equipment,
 				exercises: this.exercises,
