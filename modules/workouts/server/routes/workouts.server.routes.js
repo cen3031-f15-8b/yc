@@ -6,10 +6,10 @@ module.exports = function(app) {
 
 	// Workouts Routes
 	app.route('/api/workouts').all()
-		.get(workouts.list).all(workoutsPolicy.isAllowed)
+		.get(workouts.list).all()
 		.post(workouts.create);
 
-	app.route('/api/workouts/:workoutId').all(workoutsPolicy.isAllowed)
+	app.route('/api/workouts/:workoutId').all()
 		.get(workouts.read)
 		.put(workouts.update)
 		.delete(workouts.delete);
