@@ -267,7 +267,12 @@ exports.removeOAuthProvider = function(req, res, next) {
 	var user = req.user;
 
 	if (user) {
-		user.lastKnownLocation = req.body;
+		console.log(req.body);
+		user.lastKnownLocation.coordinates = [req.body.longitude, req.body.latitude];
+		user.lastKnownLocation.timestamp = new Date(req.body.timestamp);
+		user.lastKnownLocation.type = 'Point';
+
+		user.markModified('lastKnownLocation');
 
 		user.save(function (err) {
 			if (err) {
@@ -277,7 +282,7 @@ exports.removeOAuthProvider = function(req, res, next) {
 			} else {
 				return res.status(200).send({
 					message: 'Updated location!'
-				})
+				});
 			}
 		});
 	} else {

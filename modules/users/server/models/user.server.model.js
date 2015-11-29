@@ -72,8 +72,18 @@ var UserSchema = new Schema({
 	}],
 	/* last-known user location */
 	lastKnownLocation: {
-		type: Schema.Types.Mixed,
-		default: null
+		type: {
+			type: String,
+			default: 'Point'
+		},
+		coordinates: {
+			type: [Number],
+
+		},
+		timestamp: {
+			type: Date,
+			default: Date.now
+		}
 	},
 	salt: {
 		type: String
@@ -110,6 +120,8 @@ var UserSchema = new Schema({
 		type: Date
 	}
 });
+
+UserSchema.index({lastKnownLocation: '2dsphere'});
 
 /**
  * Hook a pre save method to hash the password
