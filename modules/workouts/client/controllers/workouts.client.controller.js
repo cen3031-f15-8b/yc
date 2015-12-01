@@ -75,8 +75,6 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 		$scope.timerFSM.countdownCounter = 2; // TODO: make these dynamic
 		$scope.timerFSM.counter = 60;
 		$scope.timerFSM.intervalHandle = undefined;
-// >>>>>>> 5adcd9625bdd1dd909b534fe69f47599b03821cb
-
 
 		// Create new Workout
 		$scope.create = function() {
