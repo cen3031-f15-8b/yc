@@ -81,6 +81,61 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 		$scope.timerFSM.counter = 60;
 		$scope.timerFSM.intervalHandle = undefined;
 
+		// Get current location
+		$window.navigator.geolocation.getCurrentPosition(function(position) {
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
+
+			console.log(position);
+		});
+
+		$scope.submitResult = function(){
+			var result = new WorkoutResults({
+				workout: $scope.workout._id,
+				user: Authentication.user._id,
+				result: $scope.result
+			});
+
+			result.$save(function(response){
+				$scope.result = undefined;
+				$scope.timerFSM.submit();
+			}, function(errorResponse){
+				// TODO/XXX: handle error
+			});
+		};
+
+
+		//////////////////////////////////////////////////////////
+		// CRUD functions
+		/////////////////////////////////////////////////////////
+
+		$scope.initializeCreateForm = function() {
+			$scope.name = '';
+			$scope.tempequipment = '';
+			$scope.equipment = [''];
+			$scope.exercises = [''];
+			$scope.seconds = '';
+			$scope.type = 'AMRAP';
+			$scope.difficulty = '';
+		};
+
+		$scope.createFormAddEquipmentRow = function(item) {
+			$scope.equipment.pop(); // remove last empty item
+			$scope.equipment.push(item, ''); // add an extra empty item
+		};
+
+		$scope.createFormAddExerciseRow = function(item) {
+			$scope.exercises.pop(); // remove last empty item
+			$scope.exercises.push(item, ''); // add an extra empty item
+		};
+
+		$scope.createFormRemoveEquipmentRow = function(index) {
+			$scope.equipment.splice(index, 1);
+		};
+
+		$scope.createFormRemoveExerciseRow = function(index) {
+			$scope.exercises.splice(index, 1);
+		};
 
 		// Create new Workout
 		$scope.create = function() {
@@ -93,7 +148,6 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 				type: this.type,
 				difficulty: this.difficulty
 			});
-
 
 			// Redirect after save
 			workout.$save(function(response) {
@@ -149,31 +203,9 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 			$scope.workout = Workouts.get({
 				workoutId: $stateParams.workoutId
 			});
-
+			$scope.timerFSM.counter = $scope.workout.seconds;
 		};
 
-		// Get current location
-		$window.navigator.geolocation.getCurrentPosition(function(position) {
-			var lat = position.coords.latitude;
-			var lng = position.coords.longitude;
-
-			console.log(position);
-		});
-
-		$scope.submitResult = function(){
-			var result = new WorkoutResults({
-				workout: $scope.workout._id,
-				user: Authentication.user._id,
-				result: $scope.result
-			});
-
-			result.$save(function(response){
-				$scope.result = undefined;
-				$scope.timerFSM.submit();
-			}, function(errorResponse){
-				// TODO/XXX: handle error
-			});
-		};
 
 	}
 

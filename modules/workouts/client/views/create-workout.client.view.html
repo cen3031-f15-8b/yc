@@ -1,4 +1,4 @@
-<section data-ng-controller="WorkoutsController">
+<section data-ng-controller="WorkoutsController" data-ng-init="initializeCreateForm()">
     <div class="page-header">
         <h1>New Workout</h1>
     </div>
@@ -6,34 +6,67 @@
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
                     <div class="controls">
+                        <label class="control-label" for="name">Name</label>
                         <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name">
-                        <br />
-                        <input type="text" data-ng-model="equipment[0]" id="equipment[0]" class="form-control" placeholder="Equipment">
-                        <input type="text" data-ng-model="equipment[1]" id="equipment[1]" class="form-control" placeholder="Equipment">
-                        <input type="text" data-ng-model="equipment[2]" id="equipment[2]" class="form-control" placeholder="Equipment">
-                        <input type="text" data-ng-model="equipment[3]" id="equipment[3]" class="form-control" placeholder="Equipment">
-                        <input type="text" data-ng-model="equipment[4]" id="equipment[4]" class="form-control" placeholder="Equipment">
-                        <br />
-                        <input type="text" data-ng-model="exercises[0]" id="exercises[0]" class="form-control" placeholder="Exercises">
-                        <input type="text" data-ng-model="exercises[1]" id="exercises[1]" class="form-control" placeholder="Exercises">
-                        <input type="text" data-ng-model="exercises[2]" id="exercises[2]" class="form-control" placeholder="Exercises">
-                        <input type="text" data-ng-model="exercises[3]" id="exercises[3]" class="form-control" placeholder="Exercises">
-                        <input type="text" data-ng-model="exercises[4]" id="exercises[4]" class="form-control" placeholder="Exercises">
-                        <br />
-                        <input type="number" data-ng-model="seconds" id="seconds" class="form-control" placeholder="seconds">
-                        <br />
-                        <input type="text" data-ng-model="type" id="type" class="form-control" placeholder="Type">
-                        <br />
-                        <input type="number" min="1" max="5" data-ng-model="difficulty" id="difficuly" class="form-control" placeholder="Difficulty">
+
+                        <label class="control-label">Equipment</label>
+
+                        <div data-ng-repeat="e in equipment track by $index">
+                            <div class="input-group">
+                                <input type="text" data-ng-model="e" class="form-control">
+                                <span class="input-group-btn" data-ng-hide="$last">
+                                    <button class="btn btn-danger" type="button"
+                                            data-ng-click="createFormRemoveEquipmentRow($index)">Delete
+                                    </button>
+                                </span>
+                                <span class="input-group-btn" data-ng-show="$last">
+                                    <button class="btn btn-default" type="button"
+                                            data-ng-click="createFormAddEquipmentRow(e)">Add
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <label class="control-label">Exercises</label>
+
+                        <div data-ng-repeat="e in exercises track by $index">
+                            <div class="input-group">
+                                <input type="text" data-ng-model="e" class="form-control">
+                                <span class="input-group-btn" data-ng-hide="$last">
+                                    <button class="btn btn-danger" type="button"
+                                            data-ng-click="createFormRemoveExerciseRow($index)">Delete
+                                    </button>
+                                </span>
+                                <span class="input-group-btn" data-ng-show="$last">
+                                    <button class="btn btn-default" type="button"
+                                            data-ng-click="createFormAddExerciseRow(e)">Add
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label">Time (seconds)</label>
+                        <input type="number" data-ng-model="seconds" id="seconds" class="form-control" placeholder="Seconds">
+
+                        <label class="control-label">Workout Type</label>
+                        <br>
+                        <label>
+                            <input type="radio" class="btn btn-default" name="type" data-ng-model="type" value="AMRAP">
+                            AMRAP
+                        </label>
+                        <label>
+                            <input type="radio" class="btn btn-default" name="type" data-ng-model="type" value="RFT">
+                            RFT
+                        </label>
+                        <br>
+                        <label class="control-label">Workout Difficulty</label>
+                        <input type="number" min="1" max="5" data-ng-model="difficulty" class="form-control" placeholder="Difficulty">
 
                     </div>
-                </div>
-                <div class="form-group">
+                    <br>
                     <input type="submit" class="btn btn-default">
                 </div>
-				<div data-ng-show="error" class="text-danger">
+                <div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
             </fieldset>
