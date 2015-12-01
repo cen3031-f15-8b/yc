@@ -86,7 +86,7 @@ exports.list = function(req, res) { Workout.find().sort('-created').populate().e
 /**
  * Workout middleware
  */
-exports.workoutByID = function(req, res, next, id) { Workout.findById(id).populate('user', 'displayName').exec(function(err, workout) {
+exports.workoutByID = function(req, res, next, id) { Workout.findById(id).exec(function(err, workout) {
 		if (err) return next(err);
 		if (! workout) return next(new Error('Failed to load Workout ' + id));
 		req.workout = workout ;
