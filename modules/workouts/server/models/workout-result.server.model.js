@@ -10,23 +10,23 @@ var mongoose = require('mongoose'),
  * Workout Result Schema
  */
 
- var WorkoutResultSchema = new Schema({
- 	workout: {
+var WorkoutResultSchema = new Schema({
+    workout: {
         type: Schema.ObjectId,
         ref: 'Workout'
-	},
-	user: {
+    },
+    user: {
         type: Schema.ObjectId,
         ref: 'User'
     },
-	result: {
-		type: Number
-	},
+    result: {
+        type: Number
+    },
     timestamp: {
         type: Date,
         default: Date.now
     }
- });
+});
 
 
 mongoose.model('WorkoutResult', WorkoutResultSchema);

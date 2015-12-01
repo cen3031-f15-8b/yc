@@ -11,28 +11,28 @@ var mongoose = require('mongoose'),
  */
 /*Adrian's Code Starts Here */
 
- var WorkoutSchema = new Schema({
- 	name: {
- 		type: String,
- 		required: 'Please give workout name',
- 		trim: true
- 	},
- 	equipment: {
- 		type: [String]
- 	},
- 	exercises: {
- 		type: [String]
- 	},
- 	seconds: {
- 		type: Number
- 	},
- 	type: { 
- 		type: String
- 	},
- 	difficulty: {
-		type: Number
-	}
- });
+var WorkoutSchema = new Schema({
+    name: {
+        type: String,
+        required: 'Please give workout name',
+        trim: true
+    },
+    equipment: {
+        type: [String]
+    },
+    exercises: {
+        type: [String]
+    },
+    seconds: {
+        type: Number
+    },
+    type: {
+        type: String
+    },
+    difficulty: {
+        type: Number
+    }
+});
 
  /*Adrian's Code End Here */
 
