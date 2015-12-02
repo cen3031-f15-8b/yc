@@ -203,7 +203,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 
 		// Update existing Workout
 		$scope.update = function() {
-			var workout = $scope.workout ;
+			var workout = $scope.workout;
 
 			workout.$update(function() {
 				$location.path('workouts/' + workout._id);
