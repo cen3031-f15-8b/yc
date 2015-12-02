@@ -2,7 +2,7 @@
 
 (function() {
 	// Parents Controller Spec
-	describe('Parents Controller Tests', function() {
+	xdescribe('Parents Controller Tests', function() {
 		// Initialize global variables
 		var ParentsController,
 		scope,

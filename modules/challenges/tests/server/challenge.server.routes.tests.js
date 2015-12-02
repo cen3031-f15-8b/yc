@@ -16,7 +16,7 @@ var app, agent, credentials, user, challenge;
 /**
  * Challenge routes tests
  */
-describe('Challenge CRUD tests', function() {
+xdescribe('Challenge CRUD tests', function() {
 	before(function(done) {
 		// Get application
 		app = express.init(mongoose);

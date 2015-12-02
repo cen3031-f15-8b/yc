@@ -5,9 +5,13 @@ angular.module('users').controller('AddChildController', ['$scope', '$http', '$l
 		$scope.user = Authentication.user;
 
 		$scope.addchild = function() {
+			// clear messages on new attempt
+			$scope.success = undefined;
+			$scope.error = undefined;
+
 			$http.post('/api/auth/signupchild', $scope.credentials).success(function(response) {
-        
-				$scope.successMsg = response.message;
+				$scope.success = response.message;
+				$scope.credentials = undefined; // clear form on success
 			}).error(function(response) {
 				$scope.error = response.message;
 			});

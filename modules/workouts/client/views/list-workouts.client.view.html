@@ -85,19 +85,19 @@
     <!--User Controls-->
     <div class="row" style="margin-bottom:15px;">
     <!--POPUP countdown to START-->
-        <div class = "container"> 
-            <div class = "overlay-hidden" ng-class="{'countdown-overlay': go}">
+        <div class = "container" ng-show="timerFSM.is('countdown')">
+            <div class = "overlay-hidden countdown-overlay">
             <h1 ng-bind="gostring"></h1>
             </div>
         </div>
         <!--START Button (and Timer)-->
         <div class="container">
-            <button ng-click="toggleCustom()" class="btn start-btn"><h3 class="x-top-bottom" ng-bind="check ? cdstring : starttxt"></h3></button>
+            <button ng-click="timerFSM.start()" class="btn start-btn"><h3 class="x-top-bottom" ng-bind="timerFSM.is('running') ? cdstring : starttxt"></h3></button>
         </div>
         <!--STOP Button-->
-        <div class="container">
-            <div ng-class="{'overlay-hidden' : stopped}">
-                <button ng-click= "stopTimer()" class="btn stop-btn"><h3 class="x-top-bottom">STOP</h3></button>
+        <div class="container" ng-show="timerFSM.is('running')">
+            <div>
+                <button ng-click= "timerFSM.cancel()" class="btn stop-btn"><h3 class="x-top-bottom">STOP</h3></button>
             </div> 
         </div>
 
