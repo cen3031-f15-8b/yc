@@ -30,6 +30,10 @@ angular.module('plans').config(['$stateProvider',
 			url: '',
 			templateUrl: 'modules/plans/views/category-plan.client.view.html'
 		}).
+		state('plans.previous-plan', {
+			url: '/previous-plan',
+			templateUrl: 'modules/plans/views/previous-plan.client.view.html'
+		}).
 		state('plans.create', {
 			url: '/create',
 			templateUrl: 'modules/plans/views/create-plan.client.view.html'

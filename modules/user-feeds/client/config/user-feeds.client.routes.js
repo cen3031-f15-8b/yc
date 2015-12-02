@@ -18,10 +18,6 @@ angular.module('user-feeds').config(['$stateProvider',
 			url: '/lib',
 			templateUrl: 'modules/user-feeds/views/workout-library.client.view.html'
 		}).
-		state('user-feeds.prev', {
-			url: '/lib/prev-plan',
-			templateUrl: 'modules/user-feeds/views/previous-plan.client.view.html'
-		}).
 		state('user-feeds.category-plan', {
 			url: '/plans',
 			templateUrl: 'modules/plans/views/category-plan.client.view.html'
