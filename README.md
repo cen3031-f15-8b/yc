@@ -27,23 +27,23 @@ In addition, we are using Google’s Maps API in order to support the necessary 
 Though we have not yet deployed our product, we are documenting our progress as we continue implementation. Take a peek at a few screenshots of our application below.  
 
 ### Sign In
-![Sign In Page](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/SignIn.png)
+![Sign In Page](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/SignIn.png)
 
 ### Sign Up
-![Sign Up Page](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/SignUp.png)
+![Sign Up Page](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/SignUp.png)
 
 ### User's Feed
-![User Feed1](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/Feed1.png)
+![User Feed1](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/Feed1.png)
 
-![User Feed2](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/Feed2.png)
+![User Feed2](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/Feed2.png)
 
-![User Feed3](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/Feed3.png)
+![User Feed3](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/Feed3.png)
 
 ### Workout Library 
-![Workout Lib](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/WorkoutLib.png)
+![Workout Lib](https://github.com/cen3031-f15-8b/yc/blob/masterE/YC_App_Screenshots/WorkoutLib.png)
 
 ### Single Workout 
-![Workout View](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/WorkoutView.png)
+![Workout View](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/WorkoutView.png)
 
 ### Start Workout
 ![Workout Start](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/WorkoutStart.png)
