@@ -83,6 +83,8 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 		$scope.timerFSM.countdownCounter = 2; // TODO: make these dynamic
 		$scope.timerFSM.counter = 60;
 		$scope.timerFSM.intervalHandle = undefined;
+		$scope.lastequipment = '';
+		$scope.lastexercise = '';
 
 		// Get current location
 		$window.navigator.geolocation.getCurrentPosition(function(position) {
@@ -141,11 +143,13 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 		$scope.createFormAddEquipmentRow = function(item) {
 			$scope.equipment.pop(); // remove last empty item
 			$scope.equipment.push(item, ''); // add an extra empty item
+			$scope.lastequipment = item;
 		};
 
 		$scope.createFormAddExerciseRow = function(item) {
 			$scope.exercises.pop(); // remove last empty item
 			$scope.exercises.push(item, ''); // add an extra empty item
+			$scope.lastexercise = item;
 		};
 
 		$scope.createFormRemoveEquipmentRow = function(index) {

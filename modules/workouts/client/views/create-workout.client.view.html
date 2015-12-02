@@ -14,7 +14,7 @@
 
                         <div data-ng-repeat="e in equipment track by $index">
                             <div class="input-group">
-                                <input type="text" data-ng-model="e" class="form-control">
+                                <input type="text" data-ng-model="equipment[$index]" class="form-control">
                                 <span class="input-group-btn" data-ng-hide="$last">
                                     <button class="btn btn-danger" type="button"
                                             data-ng-click="createFormRemoveEquipmentRow($index)">Delete
@@ -32,7 +32,7 @@
 
                         <div data-ng-repeat="e in exercises track by $index">
                             <div class="input-group">
-                                <input type="text" data-ng-model="e" class="form-control">
+                                <input type="text" data-ng-model="exercises[$index]" class="form-control">
                                 <span class="input-group-btn" data-ng-hide="$last">
                                     <button class="btn btn-danger" type="button"
                                             data-ng-click="createFormRemoveExerciseRow($index)">Delete
