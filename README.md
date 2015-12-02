@@ -40,10 +40,10 @@ Though we have not yet deployed our product, we are documenting our progress as 
 ![User Feed3](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/Feed3.png)
 
 ### Workout Library 
-![Workout Lib](https://github.com/cen3031-f15-8b/yc/blob/masterE/YC_App_Screenshots/WorkoutLib.png)
+![Workout Lib](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/WorkoutLib.png)
 
 ### Single Workout 
 ![Workout View](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/WorkoutView.png)
 
 ### Start Workout
-![Workout Start](https://github.com/cen3031-f15-8b/yc/blob/README/YC_App_Screenshots/WorkoutStart.png)
+![Workout Start](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/WorkoutStart.png)
