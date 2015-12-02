@@ -39,7 +39,8 @@ var WorkoutSchema = new Schema({
         max: 5
     },
     rating: {
-        type: Number
+        type: Number,
+        default: 0
     },
     timesCompleted: {
         type: Number,

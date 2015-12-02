@@ -23,19 +23,11 @@
                     <h4></h4>
                     <p style="text-right"><strong>Rating</strong></p>
                     <div class="col-xs-12">
-                        <i class="glyphicon glyphicon-star"></i>
-                        <i class="glyphicon glyphicon-star"></i>
-                        <i class="glyphicon glyphicon-star"></i>
-                        <i class="glyphicon glyphicon-star"></i>
-                        <i class="glyphicon glyphicon-star"></i>
+                        <i data-ng-repeat="star in _.range(1,6)" class="glyphicon" data-ng-class="{'glyphicon-star': workout.rating >= star, 'glyphicon-star-empty': workout.rating < star}"></i>
                     </div>
                     <p style="text-right"><strong>Difficulty</strong></p>
                     <div class="col-xs-12">
-                        <i class="glyphicon glyphicon-star-empty"></i>
-                        <i class="glyphicon glyphicon-star-empty"></i>
-                        <i class="glyphicon glyphicon-star-empty"></i>
-                        <i class="glyphicon glyphicon-star-empty"></i>
-                        <i class="glyphicon glyphicon-star-empty"></i>
+                        <i data-ng-repeat="star in _.range(1,6)" class="glyphicon" data-ng-class="{'glyphicon-star': workout.difficulty >= star, 'glyphicon-star-empty': workout.difficulty < star}"></i>
                     </div>
                 </div>
             </div>
