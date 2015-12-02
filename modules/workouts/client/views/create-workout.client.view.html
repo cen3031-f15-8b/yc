@@ -1,4 +1,4 @@
-<section data-ng-controller="WorkoutsController">
+<section data-ng-controller="WorkoutsController" data-ng-init="initializeCreateForm()">
     <div class="page-header">
         <h1>New Workout</h1>
     </div>
@@ -6,15 +6,67 @@
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                        <label class="control-label" for="name">Name</label>
+                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name">
+
+                        <label class="control-label">Equipment</label>
+
+                        <div data-ng-repeat="e in equipment track by $index">
+                            <div class="input-group">
+                                <input type="text" data-ng-model="equipment[$index]" class="form-control">
+                                <span class="input-group-btn" data-ng-hide="$last">
+                                    <button class="btn btn-danger" type="button"
+                                            data-ng-click="createFormRemoveEquipmentRow($index)">Delete
+                                    </button>
+                                </span>
+                                <span class="input-group-btn" data-ng-show="$last">
+                                    <button class="btn btn-default" type="button"
+                                            data-ng-click="createFormAddEquipmentRow(e)">Add
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <label class="control-label">Exercises</label>
+
+                        <div data-ng-repeat="e in exercises track by $index">
+                            <div class="input-group">
+                                <input type="text" data-ng-model="exercises[$index]" class="form-control">
+                                <span class="input-group-btn" data-ng-hide="$last">
+                                    <button class="btn btn-danger" type="button"
+                                            data-ng-click="createFormRemoveExerciseRow($index)">Delete
+                                    </button>
+                                </span>
+                                <span class="input-group-btn" data-ng-show="$last">
+                                    <button class="btn btn-default" type="button"
+                                            data-ng-click="createFormAddExerciseRow(e)">Add
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="control-label">Time (seconds)</label>
+                        <input type="number" data-ng-model="seconds" id="seconds" class="form-control" placeholder="Seconds">
+
+                        <label class="control-label">Workout Type</label>
+                        <br>
+                        <label>
+                            <input type="radio" class="btn btn-default" name="type" data-ng-model="type" value="AMRAP">
+                            AMRAP
+                        </label>
+                        <label>
+                            <input type="radio" class="btn btn-default" name="type" data-ng-model="type" value="RFT">
+                            RFT
+                        </label>
+                        <br>
+                        <label class="control-label">Workout Difficulty</label>
+                        <input type="number" min="1" max="5" data-ng-model="difficulty" class="form-control" placeholder="Difficulty">
+
                     </div>
-                </div>
-                <div class="form-group">
+                    <br>
                     <input type="submit" class="btn btn-default">
                 </div>
-				<div data-ng-show="error" class="text-danger">
+                <div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
             </fieldset>
