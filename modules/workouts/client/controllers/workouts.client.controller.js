@@ -1,8 +1,8 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Workouts', 'WorkoutResults', '$timeout', '$state', '$window',
-	function($scope, $stateParams, $location, Authentication, Workouts, WorkoutResults, $timeout, $state, $window) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Workouts', 'WorkoutResults', '$timeout', '$state', '$window',
+	function($scope, $http, $stateParams, $location, Authentication, Workouts, WorkoutResults, $timeout, $state, $window) {
 		$scope.authentication = Authentication;
 		$scope._ = _;
 
@@ -24,6 +24,8 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 			callbacks: {
 				onenteridle: function(event, from, to) {
 					$scope.starttxt = 'START';
+					$scope.difficulty = 0;
+					$scope.rating = 0;
 				},
 				onstart: function(event, from, to){
 					$scope.timerFSM.countdownCounter = 2;
@@ -98,11 +100,27 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$statePa
 			});
 
 			result.$save(function(response){
-				$scope.result = undefined;
-				$scope.timerFSM.submit();
+				$http.post('/api/workouts/ratings/'+$scope.workout._id, {
+					rating: $scope.rating,
+					difficulty : $scope.difficulty
+				}).success(function(response){
+					$scope.result = undefined;
+					$scope.findOne();
+					$scope.timerFSM.submit();
+				}).error(function(response){
+					// TODO/XXX: handle rating submission error
+				});
 			}, function(errorResponse){
-				// TODO/XXX: handle error
+				// TODO/XXX: handle workout result submission error
 			});
+		};
+
+		$scope.clickDifficultyStar = function(star) {
+			$scope.difficulty = star;
+		};
+
+		$scope.clickRatingStar = function(star) {
+			$scope.rating = star;
 		};
 
 

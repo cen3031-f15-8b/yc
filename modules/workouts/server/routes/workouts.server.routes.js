@@ -9,6 +9,9 @@ module.exports = function(app) {
 	app.route('/api/workouts/results')
 		.post(workoutResults.create); // TODO: add more functions if necessary; currently only allows client to submit results -- is that all that's needed?
 
+	app.route('/api/workouts/ratings/:workoutId')
+		.post(workouts.storeRating);
+
 	// Workouts Routes
 	app.route('/api/workouts').all()
 		.get(workouts.list).all()
