@@ -22,7 +22,9 @@
 	"globals": { // Globals variables.
 		"angular": true,
 		"io": true,
-		"ApplicationConfiguration": true
+		"ApplicationConfiguration": true,
+		"sprintf": false, // TODO: should these be true or false?
+		"StateMachine": false // see <http://jshint.com/docs/options/#globals>
 	},
 	"predef": [ // Extra globals.
 		"inject",
