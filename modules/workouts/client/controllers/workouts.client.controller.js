@@ -138,18 +138,24 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 			$scope.seconds = '';
 			$scope.type = 'AMRAP';
 			$scope.difficulty = '';
+			$scope.categories = [''];
+			$scope.Total_Body = false;
+			$scope.Upper_Body = false;
+			$scope.Lower_Body = false;
+			$scope.Core = false;
+
 		};
 
 		$scope.createFormAddEquipmentRow = function(item) {
 			$scope.equipment.pop(); // remove last empty item
 			$scope.equipment.push(item, ''); // add an extra empty item
-			$scope.lastequipment = item;
+			
 		};
 
 		$scope.createFormAddExerciseRow = function(item) {
 			$scope.exercises.pop(); // remove last empty item
 			$scope.exercises.push(item, ''); // add an extra empty item
-			$scope.lastexercise = item;
+			
 		};
 
 		$scope.createFormRemoveEquipmentRow = function(index) {
@@ -163,13 +169,44 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 		// Create new Workout
 		$scope.create = function() {
 			// Create new Workout object
+			if ($scope.Total_Body)
+			{
+				$scope.categories.push('total-body');
+			}
+			
+
+			if ($scope.Upper_Body)
+			{
+				$scope.categories.push('upper-body');
+			}
+			
+
+			if ($scope.Lower_Body)
+			{
+				$scope.categories.push('lower-body');
+			}
+			
+
+			if ($scope.Core)
+			{
+				$scope.categories.push('core');
+			}
+			
+
+
+
 			var workout = new Workouts({
 				name: this.name,
 				equipment: this.equipment,
 				exercises: this.exercises,
 				seconds: this.seconds,
 				type: this.type,
-				difficulty: this.difficulty
+				categories: this.categories,
+				difficulty: this.difficulty,
+				Total_Body: this.Total_Body,
+				Upper_Body: this.Upper_Body,
+				Lower_Body: this.Lower_Body,
+				Core: this.Core
 			});
 
 			// Redirect after save
@@ -184,6 +221,11 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 				$scope.seconds = '';
 				$scope.type = '';
 				$scope.difficulty = '';
+				$scope.categories ='';
+				$scope.Total_Body = false;
+				$scope.Upper_Body = false;
+				$scope.Lower_Body = false;
+				$scope.Core = false;
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

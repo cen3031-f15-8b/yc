@@ -38,6 +38,9 @@ var WorkoutSchema = new Schema({
         min: 1,
         max: 5
     },
+    categories: {
+    	type: [String]
+    },
     rating: {
         type: Number,
         default: 0
