@@ -1,0 +1,23 @@
+<section data-ng-controller="WorkoutsController" data-ng-init="initializeLeaderboard()">
+	<br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="list-group-item text-center">
+                <h1><strong>RANKINGS</strong></h1>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="block-content list-group-item">
+                <h4><strong>TOP PERFORMERS</strong></h4>
+                <br>
+                <ol>
+                    <li data-ng-repeat="r in leaderboardResults">{{ r.username }} <span class="pull-right">{{ r.result }}</span></li>
+                </ol>
+                </div>
+        </div>
+    </div>
+
+</section>

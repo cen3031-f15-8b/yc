@@ -121,7 +121,9 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 				}).success(function(response){
 					$scope.result = undefined;
 					$scope.findOne();
-					$scope.timerFSM.submit();
+					$state.go('workouts.leaderboard', {
+						workoutId: $stateParams.workoutId
+					});
 				}).error(function(response){
 					// TODO/XXX: handle rating submission error
 				});
@@ -138,6 +140,16 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			$scope.rating = star;
 		};
 
+		//////////////////////////////////////////////////////////
+		// Leaderboard functions
+		/////////////////////////////////////////////////////////
+
+		$scope.initializeLeaderboard = function(){
+			$http.get('/api/workouts/results/'+$stateParams.workoutId)
+					.success(function(response){
+						$scope.leaderboardResults = response;
+					});
+		};
 
 		//////////////////////////////////////////////////////////
 		// CRUD functions
