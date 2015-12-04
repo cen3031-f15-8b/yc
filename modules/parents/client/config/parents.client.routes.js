@@ -13,6 +13,10 @@ angular.module('parents').config(['$stateProvider',
 		state('parents.parent-view', {
 			url: '',
 			templateUrl: 'modules/parents/views/parent-feed.client.view.html'
+		}).
+		state('parents.add-child', {
+			url: '/addchild',
+			templateUrl: 'modules/users/views/settings/add-child.client.view.html'
 		});
 	}
 ]);
