@@ -25,15 +25,16 @@ var PlanSchema = new Schema({
 			type: [Number]
 		}
 	},
-	workouts: {
-		type: [Number]
-	},
+	workouts: [{
+		type: Schema.ObjectId,
+		ref: 'Workout'
+	}],
 	category: {
 		type: String,
 		enum: ['Whole Body', 'Upper Body', 'Lower Body'],
 		required: 'Please enter plan category'
 	},
-	rating: {
+	rating: {  
 		type: Number,
 		default: 0
 	},
