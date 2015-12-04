@@ -6,8 +6,6 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 		$scope.authentication = Authentication;
 		$scope.children = Authentication.user.children;
 
-		console.log($scope.children);
-
 		// Create new Parent
 		$scope.create = function() {
 			// Create new Parent object
@@ -64,5 +62,65 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 				parentId: $stateParams.parentId
 			});
 		};
+
+		// Initialize Google Maps
+		$scope.initializeGoogleMaps = function() {
+			// Calculate the average latitude/longitude
+			var defaultCenter = true;
+			var sumLat = 0;
+			var sumLong = 0;
+			var locationsCount = 0;
+			for (var i = 0; i < $scope.children.length; i++) {
+				var lastKnownLocation = $scope.children[i].lastKnownLocation;
+
+				if (lastKnownLocation.valid) {
+					defaultCenter = false;
+					sumLat += lastKnownLocation.coordinates[1];
+					sumLong += lastKnownLocation.coordinates[0];
+					locationsCount += 1;
+				}
+			}
+
+			// Set the center latitude/longitude
+			var centerLatLong;
+			if (defaultCenter) {
+				// Center the map to downtown Gainesville, FL
+				centerLatLong = new google.maps.LatLng(29.651954, -82.325005);
+			} else {
+				var avgLat = sumLat / locationsCount;
+				var avgLong = sumLong / locationsCount;
+				centerLatLong = new google.maps.LatLng(avgLat, avgLong);
+			}
+
+			// Initialize map
+			var mapCanvas = document.getElementById('map');
+			var mapOptions = {
+				center: centerLatLong,
+				zoom: 12,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			var map = new google.maps.Map(mapCanvas, mapOptions);
+
+			// Set Google Maps markers
+			for (var i = 0; i < $scope.children.length; i++) {
+				var lastKnownLocation = $scope.children[i].lastKnownLocation;
+
+				if (lastKnownLocation) {
+					var newLat = lastKnownLocation.coordinates[1];
+					var newLong = lastKnownLocation.coordinates[0];
+					var latLong = {lat: newLat, lng: newLong};
+					var marker = new google.maps.Marker({
+						position: latLong,
+						title: "child.displayName"
+					});
+
+					// To add the marker to the map, call setMap();
+					marker.setMap(map);
+				}
+			}
+		}
+
+		// Call initializeGoogleMaps function
+		google.maps.event.addDomListener(window, 'load', $scope.initializeGoogleMaps());
 	}
 ]);
