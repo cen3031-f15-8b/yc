@@ -25,7 +25,8 @@
 		"ApplicationConfiguration": true,
 		"sprintf": false, // TODO: should these be true or false?
 		"StateMachine": false, // see <http://jshint.com/docs/options/#globals>
-		"_": true
+		"_": true,
+		"google": false
 	},
 	"predef": [ // Extra globals.
 		"inject",
