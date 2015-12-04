@@ -17,8 +17,8 @@ module.exports = {
 				'public/lib/angular-file-upload/angular-file-upload.js',
 				'public/lib/javascript-state-machine/state-machine.js',
 				//'public/lib/sprintf/src/angular-sprintf.js', //TODO: should I use angular service or raw sprintf?
-				'public/lib/sprintf/src/sprintf.js'
-
+				'public/lib/sprintf/src/sprintf.js',
+				'public/lib/lodash/lodash.js'
 			],
 			tests: ['public/lib/angular-mocks/angular-mocks.js']
 		},
