@@ -169,6 +169,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 		// Create new Workout
 		$scope.create = function() {
 			// Create new Workout object
+			$scope.categories.pop();
 			if ($scope.Total_Body)
 			{
 				$scope.categories.push('total-body');
