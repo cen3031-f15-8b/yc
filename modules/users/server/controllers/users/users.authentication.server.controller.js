@@ -268,3 +268,36 @@ exports.removeOAuthProvider = function(req, res, next) {
 		});
 	}
 };
+
+/**
+ * Update user location
+ */
+ exports.updateLocation = function (req, res) {
+	// Init Variables
+	var user = req.user;
+
+	if (user) {
+		user.lastKnownLocation.coordinates = [req.body.longitude, req.body.latitude];
+		user.lastKnownLocation.timestamp = new Date(req.body.timestamp);
+		user.lastKnownLocation.type = 'Point';
+		user.lastKnownLocation.valid = true;
+
+		user.markModified('lastKnownLocation');
+
+		user.save(function (err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				return res.status(200).send({
+					message: 'Updated location!'
+				});
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+ };
