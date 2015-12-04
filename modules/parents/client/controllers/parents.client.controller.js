@@ -73,7 +73,7 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 			for (var i = 0; i < $scope.children.length; i++) {
 				var lastKnownLocation = $scope.children[i].lastKnownLocation;
 
-				if (lastKnownLocation) {
+				if (lastKnownLocation.valid) {
 					defaultCenter = false;
 					sumLat += lastKnownLocation.coordinates[1];
 					sumLong += lastKnownLocation.coordinates[0];

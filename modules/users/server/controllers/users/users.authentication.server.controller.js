@@ -280,6 +280,7 @@ exports.removeOAuthProvider = function(req, res, next) {
 		user.lastKnownLocation.coordinates = [req.body.longitude, req.body.latitude];
 		user.lastKnownLocation.timestamp = new Date(req.body.timestamp);
 		user.lastKnownLocation.type = 'Point';
+		user.lastKnownLocation.valid = true;
 
 		user.markModified('lastKnownLocation');
 
