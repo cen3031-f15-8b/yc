@@ -10,7 +10,8 @@ var _ = require('lodash'),
 module.exports = function (grunt) {
 	var seleniumAddress;
 	if (process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY) {
-		seleniumAddress = 'http://'+process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@localhost:4445/wd/hub';
+		seleniumAddress = undefined;
+		//seleniumAddress = 'http://'+process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@localhost:4445/wd/hub';
 	} else {
 		seleniumAddress = 'http://localhost:4444/wd/hub';
 	}
