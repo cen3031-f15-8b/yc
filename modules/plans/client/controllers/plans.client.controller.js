@@ -1,9 +1,10 @@
 'use strict';
 
 // Plans controller
-angular.module('plans').controller('PlansController', ['$scope', '$stateParams', '$location', 'Authentication', 'Plans',
-	function($scope, $stateParams, $location, Authentication, Plans ) {
+angular.module('plans').controller('PlansController', ['$scope', '$stateParams', '$location', 'Authentication', 'Plans', 'Workouts',
+	function($scope, $stateParams, $location, Authentication, Plans, Workouts) {
 		$scope.authentication = Authentication;
+		$scope.workout_id = '564f8ca4095addac5fe9b99e';
 
 		// Create new Plan
 		$scope.create = function() {
@@ -50,9 +51,16 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 			});
 		};
 
-		// Find a list of Plans
-		$scope.find = function() {
-			$scope.plans = Plans.query();
+		// Find a list of Workouts
+		$scope.findWorkout = function() {
+			$scope.workouts = Workouts.query();
+		};
+
+		// Find existing Workout
+		$scope.findOneWorkout = function() {
+			$scope.workout = Workouts.get({
+				workout_id: $scope.workout_id
+			});
 		};
 
 		// Find existing Plan
