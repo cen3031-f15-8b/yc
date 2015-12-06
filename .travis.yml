@@ -17,3 +17,7 @@ addons:
 cache:
   directories:
     - node_modules
+before_script:
+  - grunt test-server
+script:
+  - grunt test-server-already-running
