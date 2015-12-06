@@ -17,6 +17,10 @@ module.exports = function (grunt) {
 			'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
 			'build': process.env.TRAVIS_BUILD_NUMBER
 		};
+		seleniumArgs.capabilities['platform'] = 'Linux';
+		seleniumArgs.capabilities['version'] = '5.1';
+		seleniumArgs.capabilities['deviceName'] = 'Android Emulator';
+		seleniumArgs.capabilities['deviceOrientation'] = 'portrait';
 	} else {
 		seleniumArgs.seleniumAddress = 'http://localhost:4444/wd/hub';
 	}
