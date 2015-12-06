@@ -191,14 +191,13 @@ module.exports = function (grunt) {
 			options: {
 				configFile: 'protractor.conf.js',
 				keepAlive: true,
-				noColor: false,
-				args: {
-					seleniumAddress: seleniumAddress
-				}
+				noColor: false
 			},
 			e2e: {
 				options: {
-					args: {} // Target-specific arguments
+					args: {
+						seleniumAddress: seleniumAddress
+					} // Target-specific arguments
 				}
 			}
 		}
