@@ -8,6 +8,13 @@ var _ = require('lodash'),
 	testAssets = require('./config/assets/test');
 
 module.exports = function (grunt) {
+	var seleniumAddress;
+	if (process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY) {
+		seleniumAddress = 'http://'+process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@localhost:4445/wd/hub';
+	} else {
+		seleniumAddress = 'http://localhost:4444/wd/hub';
+	}
+
 	// Project Configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -184,7 +191,10 @@ module.exports = function (grunt) {
 			options: {
 				configFile: 'protractor.conf.js',
 				keepAlive: true,
-				noColor: false
+				noColor: false,
+				args: {
+					seleniumAddress: seleniumAddress
+				}
 			},
 			e2e: {
 				options: {
