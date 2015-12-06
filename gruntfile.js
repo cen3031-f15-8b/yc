@@ -13,14 +13,10 @@ module.exports = function (grunt) {
 		seleniumArgs.sauceUser = process.env.SAUCE_USERNAME;
 		seleniumArgs.sauceKey = process.env.SAUCE_ACCESS_KEY;
 		seleniumArgs.capabilities = {
-			browserName:'android',
+			browserName: 'chrome',
 			'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
 			'build': process.env.TRAVIS_BUILD_NUMBER
 		};
-		seleniumArgs.capabilities['platform'] = 'Linux';
-		seleniumArgs.capabilities['version'] = String('5.1');
-		seleniumArgs.capabilities['deviceName'] = 'Android Emulator';
-		seleniumArgs.capabilities['deviceOrientation'] = 'portrait';
 	} else {
 		seleniumArgs.seleniumAddress = 'http://localhost:4444/wd/hub';
 	}
@@ -240,11 +236,10 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', ['env:dev', 'lint', 'ngAnnotate', 'uglify', 'cssmin']);
 
 	// Run the project tests
-	grunt.registerTask('test-setup', ['env:test', 'mongoose']);
-	grunt.registerTask('test-server', ['env:test', 'test-setup', 'concurrent:default']);
+	grunt.registerTask('test-server', ['env:test', 'mongoose', 'concurrent:default']);
 	grunt.registerTask('test-no-server-needed', ['env:test', 'mongoose', 'mochaTest', 'karma:unit']);
 	grunt.registerTask('test-server-already-running', ['env:test', 'test-no-server-needed', 'protractor']);
-	grunt.registerTask('test', ['env:test', 'test-setup', 'test-no-server-needed', 'concurrent:protractor']);
+	grunt.registerTask('test', ['env:test', 'test-no-server-needed', 'concurrent:protractor']);
 
 	// Run the project in development mode
 	grunt.registerTask('default', ['env:dev', 'lint', 'concurrent:default']);
