@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 	var seleniumArgs = {};
 	if (process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY) {
 		seleniumArgs.sauceUser = process.env.SAUCE_USERNAME;
-		seleniumArgs.sauceKey = process.env.SAUCE_KEY;
+		seleniumArgs.sauceKey = process.env.SAUCE_ACCESS_KEY;
 		seleniumArgs.capabilities = {
 			browserName:'chrome',
 			'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
