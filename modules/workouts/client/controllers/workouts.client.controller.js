@@ -4,7 +4,7 @@
 angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$http', '$location', '$state', '$stateParams', '$timeout', 'Authentication', 'Users', 'WorkoutResults', 'Workouts',
 	function($scope, $window, $http, $location, $state, $stateParams, $timeout, Authentication, Users, WorkoutResults, Workouts) {
 		$scope.authentication = Authentication;
-		$scope._ = _;
+		//$scope._ = _;
 
 		$scope.convertSeconds = function(seconds){
 			return sprintf('%d:%02d', Math.floor(seconds / 60), (seconds % 60));
