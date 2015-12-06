@@ -8,13 +8,19 @@ var _ = require('lodash'),
 	testAssets = require('./config/assets/test');
 
 module.exports = function (grunt) {
-	var seleniumAddress;
+	var seleniumArgs = {};
 	if (process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY) {
-		seleniumAddress = undefined;
-		//seleniumAddress = 'http://'+process.env.SAUCE_USERNAME+':'+process.env.SAUCE_ACCESS_KEY+'@localhost:4445/wd/hub';
+		seleniumArgs.sauceUser = process.env.SAUCE_USERNAME;
+		seleniumArgs.sauceKey = process.env.SAUCE_KEY;
+		seleniumArgs.capabilities = {
+			'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+			'build': process.env.TRAVIS_BUILD_NUMBER
+		};
 	} else {
-		seleniumAddress = 'http://localhost:4444/wd/hub';
+		seleniumArgs.seleniumAddress = 'http://localhost:4444/wd/hub';
 	}
+
+
 
 	// Project Configuration
 	grunt.initConfig({
@@ -196,11 +202,7 @@ module.exports = function (grunt) {
 			},
 			e2e: {
 				options: {
-					args: {
-						seleniumAddress: seleniumAddress,
-						sauceUser: process.env.SAUCE_USERNAME || null,
-						sauceKey: process.env.SAUCE_KEY || null
-					} // Target-specific arguments
+					args: seleniumArgs // Target-specific arguments
 				}
 			}
 		}
