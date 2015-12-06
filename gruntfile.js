@@ -13,7 +13,7 @@ module.exports = function (grunt) {
 		seleniumArgs.sauceUser = process.env.SAUCE_USERNAME;
 		seleniumArgs.sauceKey = process.env.SAUCE_ACCESS_KEY;
 		seleniumArgs.capabilities = {
-			browserName:'chrome',
+			browserName:'android',
 			'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
 			'build': process.env.TRAVIS_BUILD_NUMBER
 		};
