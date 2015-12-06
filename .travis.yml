@@ -17,6 +17,7 @@ addons:
 cache:
   directories:
     - node_modules
+    - public/lib
 before_script:
   - grunt test-server & sleep 5
 script:
