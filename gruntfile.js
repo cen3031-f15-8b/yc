@@ -237,9 +237,9 @@ module.exports = function (grunt) {
 
 	// Run the project tests
 	grunt.registerTask('test-setup', ['env:test', 'mongoose']);
-	grunt.registerTask('test-server', ['test-setup', 'concurrent:default']);
-	grunt.registerTask('test-no-server-needed', ['mongoose', 'mochaTest', 'karma:unit']);
-	grunt.registerTask('test-server-already-running', ['test-no-server-needed', 'protractor']);
+	grunt.registerTask('test-server', ['env:test', 'test-setup', 'concurrent:default']);
+	grunt.registerTask('test-no-server-needed', ['env:test', 'mongoose', 'mochaTest', 'karma:unit']);
+	grunt.registerTask('test-server-already-running', ['env:test', 'test-no-server-needed', 'protractor']);
 	grunt.registerTask('test', ['env:test', 'test-setup', 'test-no-server-needed', 'concurrent:protractor']);
 
 	// Run the project in development mode
