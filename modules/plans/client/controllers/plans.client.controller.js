@@ -1,8 +1,8 @@
 'use strict';
 
 // Plans controller
-angular.module('plans').controller('PlansController', ['$scope', '$stateParams', '$location', 'Authentication', 'Plans', 'Workouts',
-	function($scope, $stateParams, $location, Authentication, Plans, Workouts) {
+angular.module('plans').controller('PlansController', ['$scope', '$stateParams', '$location', '$log','Authentication', 'Plans', 'Workouts',	
+	function($scope, $stateParams, $location, $log, Authentication, Plans, Workouts) {
 		$scope.authentication = Authentication;
 		$scope.workout_id = '564f8ca4095addac5fe9b99e';
 
@@ -69,5 +69,25 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 				planId: $stateParams.planId
 			});
 		};
+		$scope.items = [
+    'The first choice!',
+    'And another choice for you.',
+    'but wait! A third!'
+  ];
+
+  $scope.status = {
+    isopen: false
+  };
+
+  $scope.toggled = function(open) {
+    $log.log('Dropdown is now: ', open);
+  };
+
+  $scope.toggleDropdown = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.status.isopen = !$scope.status.isopen;
+  };
+
 	}
 ]);
