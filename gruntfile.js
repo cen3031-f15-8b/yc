@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 			'build': process.env.TRAVIS_BUILD_NUMBER
 		};
 		seleniumArgs.capabilities['platform'] = 'Linux';
-		seleniumArgs.capabilities['version'] = '5.1';
+		seleniumArgs.capabilities['version'] = String('5.1');
 		seleniumArgs.capabilities['deviceName'] = 'Android Emulator';
 		seleniumArgs.capabilities['deviceOrientation'] = 'portrait';
 	} else {
