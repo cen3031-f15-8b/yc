@@ -196,7 +196,9 @@ module.exports = function (grunt) {
 			e2e: {
 				options: {
 					args: {
-						seleniumAddress: seleniumAddress
+						seleniumAddress: seleniumAddress,
+						sauceUser: process.env.SAUCE_USERNAME || null,
+						sauceKey: process.env.SAUCE_KEY || null
 					} // Target-specific arguments
 				}
 			}
