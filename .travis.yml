@@ -18,6 +18,6 @@ cache:
   directories:
     - node_modules
 before_script:
-  - grunt test-server
+  - grunt test-server & sleep 5
 script:
   - grunt test-server-already-running
