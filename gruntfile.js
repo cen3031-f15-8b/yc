@@ -84,6 +84,7 @@ module.exports = function (grunt) {
 		concurrent: {
 			default: ['nodemon', 'watch'],
 			debug: ['nodemon', 'watch', 'node-inspector'],
+			protractor: ['nodemon', 'watch', 'protractor'],
 			options: {
 				logConcurrentOutput: true
 			}
@@ -220,7 +221,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', ['env:dev', 'lint', 'ngAnnotate', 'uglify', 'cssmin']);
 
 	// Run the project tests
-	grunt.registerTask('test', ['env:test', 'mongoose', 'mochaTest', 'karma:unit']);
+	grunt.registerTask('test', ['env:test', 'mongoose', 'mochaTest', 'karma:unit', 'concurrent:protractor']);
 
 	// Run the project in development mode
 	grunt.registerTask('default', ['env:dev', 'lint', 'concurrent:default']);
