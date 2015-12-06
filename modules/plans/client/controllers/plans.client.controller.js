@@ -59,7 +59,7 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 		// Find existing Workout
 		$scope.findOneWorkout = function() {
 			$scope.workout = Workouts.get({
-				workout_id: $scope.workout_id
+				workoutId: $scope.workout_id
 			});
 		};
 
