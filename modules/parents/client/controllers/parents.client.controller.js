@@ -102,8 +102,7 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 			var mapOptions = {
 				center: centerLatLong,
 				zoom: 12,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
-
+				mapTypeId: google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(mapCanvas, mapOptions);
 
