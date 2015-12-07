@@ -105,7 +105,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
-		};;
+		};
 
 		$scope.submitResult = function(){
 			var result = new WorkoutResults({

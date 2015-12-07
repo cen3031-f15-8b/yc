@@ -65,13 +65,15 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 
 		// Initialize Google Maps
 		$scope.initializeGoogleMaps = function() {
+			var lastKnownLocation, i; // silence "variable is already defined" jshint
+
 			// Calculate the average latitude/longitude
 			var defaultCenter = true;
 			var sumLat = 0;
 			var sumLong = 0;
 			var locationsCount = 0;
-			for (var i = 0; i < $scope.children.length; i++) {
-				var lastKnownLocation = $scope.children[i].lastKnownLocation;
+			for (i = 0; i < $scope.children.length; i++) {
+				lastKnownLocation = $scope.children[i].lastKnownLocation;
 
 				if (lastKnownLocation.valid) {
 					defaultCenter = false;
@@ -98,27 +100,27 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 				center: centerLatLong,
 				zoom: 12,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
-			}
+			};
 			var map = new google.maps.Map(mapCanvas, mapOptions);
 
 			// Set Google Maps markers
-			for (var i = 0; i < $scope.children.length; i++) {
-				var lastKnownLocation = $scope.children[i].lastKnownLocation;
+			for (i = 0; i < $scope.children.length; i++) {
+				lastKnownLocation = $scope.children[i].lastKnownLocation;
 
-				if (lastKnownLocation) {
+				if (lastKnownLocation.valid) {
 					var newLat = lastKnownLocation.coordinates[1];
 					var newLong = lastKnownLocation.coordinates[0];
 					var latLong = {lat: newLat, lng: newLong};
 					var marker = new google.maps.Marker({
 						position: latLong,
-						title: "child.displayName"
+						title: $scope.children[i].displayName
 					});
 
 					// To add the marker to the map, call setMap();
 					marker.setMap(map);
 				}
 			}
-		}
+		};
 
 		// Call initializeGoogleMaps function
 		google.maps.event.addDomListener(window, 'load', $scope.initializeGoogleMaps());
