@@ -97,7 +97,7 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 		// Find an existing Workout by name
 		$scope.findOneWorkoutByName = function() {
 			$scope.workout = Workouts.get({
-				workoutId: $stateParams.workoutId
+				workoutName: $stateParams.workoutName
 			});
 		};
 
