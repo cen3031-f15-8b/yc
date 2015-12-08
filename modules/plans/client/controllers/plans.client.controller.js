@@ -4,13 +4,29 @@
 angular.module('plans').controller('PlansController', ['$scope', '$stateParams', '$location', '$log','Authentication', 'Plans', 'Workouts',	
 	function($scope, $stateParams, $location, $log, Authentication, Plans, Workouts) {
 		$scope.authentication = Authentication;
-		$scope.workout_id = '564f8ca4095addac5fe9b99e';
+		// $scope.workout_id = '564f8ca4095addac5fe9b99e';
+
+		// user input 
+		$scope.daysPerWeek = 0;
+		$scope.tempDaysPerWeekArr = [];
+		$scope.tmpWorkoutName;
+		$scope.tmpWorkoutId;
+		$scope.tempWorkoutsArr = [];
+		$scope.totalWorkouts = 0;
 
 		// Create new Plan
 		$scope.create = function() {
+			// Make an array for the number of workouts per week
+			$scope.initializeNumberOfDaysPerWeek(this.duration);
+			$scope.initializeWorkoutsArray(this.tmpWorkoutName, this.daysPerWeek);
+
 			// Create new Plan object
 			var plan = new Plans ({
-				name: this.name
+				name: this.name,
+				category: this.category,
+				duration: this.duration,
+				numberOfDaysPerWeek: $scope.tempDaysPerWeekArr,
+				workouts: $scope.tempWorkoutsArr
 			});
 
 			// Redirect after save
@@ -22,6 +38,21 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+		};
+
+		$scope.initializeNumberOfDaysPerWeek = function(tempdur, tempdays) {
+			$scope.daysPerWeek = tempdays;
+			for(var i = 0; i < tempdur; i++) {
+				$scope.tempDaysPerWeekArr[i] = $scope.daysPerWeek;
+			}
+		};
+
+		$scope.initializeWorkoutsArray = function(temp) {
+			$scope.tmpWorkoutName = temp;
+			$scope.tmpWorkoutId = Workouts.get({
+				name: $scope.tmpWorkoutName
+			}).workoutId;
+			$scope.tempWorkoutsArr.push($scope.tmpWorkoutId);
 		};
 
 		// Remove existing Plan
@@ -69,25 +100,25 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 				planId: $stateParams.planId
 			});
 		};
-		$scope.items = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
-  ];
 
-  $scope.status = {
-    isopen: false
-  };
+		
+		// $scope.items = [
+  //   'The first choice!',
+  //   'And another choice for you.',
+  //   'but wait! A third!'
+  // ];
 
-  $scope.toggled = function(open) {
-    $log.log('Dropdown is now: ', open);
-  };
+  // $scope.status = {
+  //   isopen: false
+  // };
 
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
+  // $scope.toggled = function(open) {
+  //   $log.log('Dropdown is now: ', open);
+  // };
 
-	}
-]);
+  // $scope.toggleDropdown = function($event) {
+  //   $event.preventDefault();
+  //   $event.stopPropagation();
+  //   $scope.status.isopen = !$scope.status.isopen;
+  // };
+}]);
