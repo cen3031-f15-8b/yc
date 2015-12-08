@@ -4,7 +4,7 @@
 angular.module('plans').controller('PlansController', ['$scope', '$stateParams', '$location', '$log','Authentication', 'Plans', 'Workouts',	
 	function($scope, $stateParams, $location, $log, Authentication, Plans, Workouts) {
 		$scope.authentication = Authentication;
-		$scope.workout_id = '564f8ca4095addac5fe9b99e';
+		// $scope.workout_id = '564f8ca4095addac5fe9b99e';
 
 		// user input 
 		$scope.daysPerWeek = 0;
@@ -100,15 +100,17 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 				planId: $stateParams.planId
 			});
 		};
-		$scope.items = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
-  ];
 
-  $scope.status = {
-    isopen: false
-  };
+		
+		// $scope.items = [
+  //   'The first choice!',
+  //   'And another choice for you.',
+  //   'but wait! A third!'
+  // ];
+
+  // $scope.status = {
+  //   isopen: false
+  // };
 
   // $scope.toggled = function(open) {
   //   $log.log('Dropdown is now: ', open);
@@ -119,5 +121,4 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
   //   $event.stopPropagation();
   //   $scope.status.isopen = !$scope.status.isopen;
   // };
-}
-]);
+}]);
