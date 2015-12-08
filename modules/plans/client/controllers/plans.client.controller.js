@@ -9,8 +9,8 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 		// user input 
 		$scope.daysPerWeek = 0;
 		$scope.tempDaysPerWeekArr = [];
-		$scope.tmpWorkoutName;
-		$scope.tmpWorkoutId;
+		//$scope.tmpWorkoutName;
+		//$scope.tmpWorkoutId;
 		$scope.tempWorkoutsArr = [];
 		$scope.totalWorkouts = 0;
 
@@ -87,10 +87,17 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 			$scope.workouts = Workouts.query();
 		};
 
-		// Find existing Workout
-		$scope.findOneWorkout = function() {
+		// Find existing Workout by ID
+		$scope.findOneWorkoutById = function() {
 			$scope.workout = Workouts.get({
-				workoutId: $scope.workout_id
+				workoutId: $stateParams.workoutId
+			});
+		};
+
+		// Find an existing Workout by name
+		$scope.findOneWorkoutByName = function() {
+			$scope.workout = Workouts.get({
+				workoutId: $stateParams.workoutId
 			});
 		};
 

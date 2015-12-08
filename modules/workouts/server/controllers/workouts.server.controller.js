@@ -94,6 +94,14 @@ exports.workoutByID = function(req, res, next, id) { Workout.findById(id).exec(f
 	});
 };
 
+exports.workoutByName = function(req, res, next, workoutName) { Workout.findOne({name : workoutName}).exec(function(err, workout) {
+		if (err) return next(err);
+		if (! workout) return next(new Error('Failed to load Workout ' + workoutName));
+		req.workout = workout ;
+		next();
+	});
+};
+
 /**
  * Store workout rating
  */
