@@ -108,6 +108,11 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 			});
 		};
 
+		// Find all plans in database
+		$scope.findAll = function() {
+			$scope.plans = Plans.query();
+		};
+
 		
 		// $scope.items = [
   //   'The first choice!',
