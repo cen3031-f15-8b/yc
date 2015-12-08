@@ -9,7 +9,7 @@ module.exports = function(app) {
 		.get(plans.list).all()
 		.post(plans.create);
 
-	app.route('/api/plans/:planId').all(plansPolicy.isAllowed)
+	app.route('/api/plans/:planId').all()
 		.get(plans.read)
 		.put(plans.update)
 		.delete(plans.delete);
