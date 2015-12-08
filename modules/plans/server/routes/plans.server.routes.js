@@ -4,7 +4,7 @@ module.exports = function(app) {
 	var plans = require('../controllers/plans.server.controller');
 	var plansPolicy = require('../policies/plans.server.policy');
 
-	var workouts = require('../controllers/workouts.server.controller');
+	var workouts = require('../../../workouts/server/controllers/workouts.server.controller');
 
 	// Plans Routes
 	app.route('/api/plans').all()
