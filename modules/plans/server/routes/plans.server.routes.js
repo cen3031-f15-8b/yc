@@ -6,7 +6,7 @@ module.exports = function(app) {
 
 	// Plans Routes
 	app.route('/api/plans').all()
-		.get(plans.list).all(plansPolicy.isAllowed)
+		.get(plans.list).all()
 		.post(plans.create);
 
 	app.route('/api/plans/:planId').all(plansPolicy.isAllowed)

@@ -21,9 +21,9 @@ var PlanSchema = new Schema({
 		default: 1,
 		min: 1,
 		required: 'Please enter the duration of the plan in weeks',
-		numberOfDaysPerWeek: {
-			type: [Number]
-		}
+	},
+	numberOfDaysPerWeek: {
+		type: [Number]
 	},
 	workouts: [{
 		type: Schema.ObjectId,
