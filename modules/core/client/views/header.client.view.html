@@ -10,14 +10,6 @@
 		</button>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-		<!-- <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-			<li data-ui-sref-active="active">
-				<a data-ui-sref="authentication.signup" target="_self">Sign Up</a>
-			</li>
-			<li data-ui-sref-active="active">
-				<a data-ui-sref="authentication.signin" target="_self">Sign In</a>
-			</li>
-		</ul> -->
 		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle user-header-dropdown-toggle" data-toggle="dropdown">
@@ -34,9 +26,6 @@
 					<li data-ui-sref-active="active" data-ng-show="authentication.user.provider === 'local'">
 						<a data-ui-sref="settings.password">Change Password</a>
 					</li>
-					<!-- <li data-ui-sref-active="active">
-						<a data-ui-sref="settings.accounts">Manage Social Accounts</a>
-					</li> -->
 					<li class="divider"></li>
 					<li>
 						<a href="/api/auth/signout" target="_self">Signout</a>
