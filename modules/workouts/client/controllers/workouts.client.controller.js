@@ -145,6 +145,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 		/////////////////////////////////////////////////////////
 
 		$scope.initializeLeaderboard = function(){
+			$scope.workoutId = $stateParams.workoutId;
 			$http.get('/api/workouts/results/'+$stateParams.workoutId)
 					.success(function(response){
 						$scope.leaderboardResults = response;
