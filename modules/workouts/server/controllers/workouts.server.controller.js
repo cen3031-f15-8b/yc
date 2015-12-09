@@ -72,7 +72,7 @@ exports.delete = function(req, res) {
 /**
  * List of Workouts
  */
-exports.list = function(req, res) { Workout.find().sort('-created').populate().exec(function(err, workouts) {
+exports.list = function(req, res) { Workout.find().sort('-created').exec(function(err, workouts) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
