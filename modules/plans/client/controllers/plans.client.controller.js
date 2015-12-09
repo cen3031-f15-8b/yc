@@ -17,8 +17,8 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 		// Create new Plan
 		$scope.create = function() {
 			// Make an array for the number of workouts per week
-			$scope.initializeNumberOfDaysPerWeek(this.duration);
-			$scope.initializeWorkoutsArray(this.tmpWorkoutName, this.daysPerWeek);
+			$scope.initializeNumberOfDaysPerWeek(this.duration, this.daysPerWeek);
+			// $scope.initializeWorkoutsArray(this.tmpWorkoutName, this.daysPerWeek);
 
 			// Create new Plan object
 			var plan = new Plans ({
@@ -42,22 +42,28 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 
 		$scope.initializeNumberOfDaysPerWeek = function(tempdur, tempdays) {
 			$scope.daysPerWeek = tempdays;
+			console.log($scope.daysPerWeek);
 			for(var i = 0; i < tempdur; i++) {
 				$scope.tempDaysPerWeekArr[i] = $scope.daysPerWeek;
 			}
 		};
 
-		$scope.initializeWorkoutsArray = function(temp) {
-			$scope.tmpWorkoutName = temp;
-			console.log('$scope.tmpWorkoutName =');
-			console.log($scope.tmpWorkoutName);
-			$scope.tmpWorkoutId = Workouts.get({
-				name: $scope.tmpWorkoutName
-			})._id;
-			console.log('$scope.tmpWorkoutId = ');
-			console.log($scope.tmpWorkoutId);
-			$scope.tempWorkoutsArr.push($scope.tmpWorkoutId);
+		$scope.addWorkoutToPlan = function(tempId) {
+			console.log(tempId);
+			$scope.tempWorkoutsArr.push(tempId);
 		};
+
+		// $scope.initializeWorkoutsArray = function(temp) {
+		// 	$scope.tmpWorkoutName = temp;
+		// 	console.log('$scope.tmpWorkoutName =');
+		// 	console.log($scope.tmpWorkoutName);
+		// 	$scope.tmpWorkoutId = Workouts.get({
+		// 		name: $scope.tmpWorkoutName
+		// 	})._id;
+		// 	console.log('$scope.tmpWorkoutId = ');
+		// 	console.log($scope.tmpWorkoutId);
+		// 	$scope.tempWorkoutsArr.push($scope.tmpWorkoutId);
+		// };
 
 		// Remove existing Plan
 		$scope.remove = function( plan ) {
