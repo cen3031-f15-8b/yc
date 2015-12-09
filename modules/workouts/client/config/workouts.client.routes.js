@@ -25,6 +25,10 @@ angular.module('workouts').config(['$stateProvider',
 		state('workouts.edit', {
 			url: '/:workoutId/edit',
 			templateUrl: 'modules/workouts/views/edit-workout.client.view.html'
+		}).
+		state('workouts.leaderboard', {
+			url: '/:workoutId/leaderboard',
+			templateUrl: 'modules/workouts/views/view-leaderboard.client.view.html'
 		});
 	}
 ]);
