@@ -49,9 +49,13 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 
 		$scope.initializeWorkoutsArray = function(temp) {
 			$scope.tmpWorkoutName = temp;
+			console.log("$scope.tmpWorkoutName = ");
+			console.log($scope.tmpWorkoutName);
 			$scope.tmpWorkoutId = Workouts.get({
 				name: $scope.tmpWorkoutName
-			}).workoutId;
+			})._id;
+			console.log("$scope.tmpWorkoutId = ");
+			console.log($scope.tmpWorkoutId);
 			$scope.tempWorkoutsArr.push($scope.tmpWorkoutId);
 		};
 
@@ -99,6 +103,17 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 			$scope.workout = Workouts.get({
 				workoutName: $stateParams.workoutName
 			});
+		};
+
+		//Initialize create form
+		$scope.initializeCreateForm = function() {
+			$scope.name = '';
+			$scope.category = '';
+			$scope.duration = '';
+			$scope.tempNumDays = '';
+			$scope.numberOfDaysPerWeek = [''];
+			$scope.workoutNames = [''];
+			$scope.workouts = [''];
 		};
 
 		// Find existing Plan
