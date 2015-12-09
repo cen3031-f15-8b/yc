@@ -25,10 +25,35 @@ describe('User feeds E2E Tests:', function() {
 			element(by.id('single_workouts')).click();
 			expect(browser.getCurrentUrl()).toEqual('http://localhost:3001/user-feeds/lib/single-workout');
 		});
-		/*it('should go to Previous Plan', function(){
+		xit('should go to Previous Plan', function(){
 			element(by.id('previous_plan')).click();
 			expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/user-feeds/lib');
-		});*/
+		});
+
+		it('should go to Single Workout Categories', function(){
+			element(by.id('single_workouts_categories')).click();
+			expect(browser.getCurrentUrl()).toEqual('http://localhost:3001/user-feeds/lib/single-workout/category');
+		});
+		it('should go to Whole Body Workouts', function(){
+			element(by.id('whole_body_workouts')).click();
+			expect(browser.getCurrentUrl()).toEqual('http://localhost:3001/user-feeds/lib/single-workout/category/whole-body');
+		});
+		it('should go to Upper Body Workouts', function(){
+			browser.get('/user-feeds/lib/single-workout/category');
+			element(by.id('upper_body_workouts')).click();
+			expect(browser.getCurrentUrl()).toEqual('http://localhost:3001/user-feeds/lib/single-workout/category/upper-body');
+		});
+		it('should go to Lower Body Workouts', function(){
+			browser.get('/user-feeds/lib/single-workout/category');
+			element(by.id('lower_body_workouts')).click();
+			expect(browser.getCurrentUrl()).toEqual('http://localhost:3001/user-feeds/lib/single-workout/category/lower-body');
+		});
+
+		xit('should go to Today\'s Workout', function(){
+			browser.get('/user-feeds/lib/single-workout');
+			element(by.id('todays_workout')).click();
+			expect(browser.getCurrentUrl()).toEqual('http://localhost:3001/workout');
+		});
 
 	});
 });

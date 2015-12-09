@@ -6,5 +6,10 @@
 exports.config = {
 	//seleniumAddress: 'http://localhost:4444/wd/hub',
 	baseUrl: 'http://localhost:' + (process.env.PORT || '3001'),
-	specs: ['modules/*/tests/e2e/*.js']
+	specs: [
+		'modules/parents/tests/e2e/*.js',
+		'modules/users/tests/e2e/*.js',
+		'modules/user-feeds/tests/e2e/*.js',
+		'modules/plans/tests/e2e/*.js'
+	]
 };

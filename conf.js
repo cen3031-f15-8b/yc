@@ -10,6 +10,7 @@ exports.config = {
 		//'modules/*/tests/e2e/*.js'
 		'modules/parents/tests/e2e/*.js',
 		'modules/users/tests/e2e/*.js',
-		'modules/user-feeds/tests/e2e/*.js'
+		'modules/user-feeds/tests/e2e/*.js',
+		'modules/plans/tests/e2e/*.js'
 	]
 };

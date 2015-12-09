@@ -50,10 +50,6 @@ angular.module('user-feeds').config(['$stateProvider',
 		state('user-feeds.todays-workout', {
 			url: '/lib/single-workout/todays-workout',
 			templateUrl: 'module/user-feeds/views/todays-workout.client.view.html'
-		}).
-		state('workout', {
-			url: '/workout/:workoutid',
-			templateUrl: 'modules/workouts/views/list-workouts.client.view.html'
 		});
 	}
 ]);
