@@ -152,10 +152,9 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			$scope.type = 'AMRAP';
 			$scope.difficulty = '';
 			$scope.categories = [''];
-			$scope.Total_Body = false;
+			$scope.Whole_Body = false;
 			$scope.Upper_Body = false;
 			$scope.Lower_Body = false;
-			$scope.Core = false;
 
 		};
 
@@ -183,9 +182,9 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 		$scope.create = function() {
 			// Create new Workout object
 			$scope.categories.pop();
-			if ($scope.Total_Body)
+			if ($scope.Whole_Body)
 			{
-				$scope.categories.push('total-body');
+				$scope.categories.push('whole-body');
 			}
 			
 
@@ -199,13 +198,6 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			{
 				$scope.categories.push('lower-body');
 			}
-			
-
-			if ($scope.Core)
-			{
-				$scope.categories.push('core');
-			}
-			
 
 
 
@@ -217,10 +209,9 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 				type: this.type,
 				categories: this.categories,
 				difficulty: this.difficulty,
-				Total_Body: this.Total_Body,
+				Whole_Body: this.Whole_Body,
 				Upper_Body: this.Upper_Body,
-				Lower_Body: this.Lower_Body,
-				Core: this.Core
+				Lower_Body: this.Lower_Body
 			});
 
 			// Redirect after save
@@ -236,10 +227,9 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 				$scope.type = '';
 				$scope.difficulty = '';
 				$scope.categories ='';
-				$scope.Total_Body = false;
+				$scope.Whole_Body = false;
 				$scope.Upper_Body = false;
 				$scope.Lower_Body = false;
-				$scope.Core = false;
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -284,6 +274,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			});
 			$scope.timerFSM.counter = $scope.workout.seconds;
 		};
+
 
 	}
 
