@@ -21,18 +21,20 @@
 			<div class="list-group">
 				<h3 class="list-group-item heading">My Children</h3>
 
-
 				<div class="list-group-item" ng-if="children.length === 0">
-		      <h5>No children registered.</h5>
+					<div class ="col-sm-10">
+		      			<h5>No children registered.</h5>
+					</div>
+					<div class ="col-sm-2">
+						<button data-ui-sref="settings.addchild">Add Child</button>
+					</div>
+				</div>
 
-		    </div>
-
-		    <div ng-if="children.length > 0">
-					<li class="list-group-item" ng-repeat="child in children">
-						<h4>{{ child.displayName }}</h4>
-					</li>
-		    </div>
-				<a data-ui-sref="settings.addchild" class="list-group-item">Add Child</a>
+				<div ng-if="children.length > 0">
+						<li class="list-group-item" ng-repeat="child in children">
+							<h5>{{ child.displayName }}</h5>
+						</li>
+				</div>
 			</div>
 		</div>
 	</div>
