@@ -9,5 +9,13 @@ describe('Users E2E Tests:', function() {
 				expect(errorText).toBe('Missing credentials');
 			});
 		});
+
+
+		it('Should log in successfully', function(){
+			element(by.id('username')).sendKeys('testparentchild3');
+			element(by.id('password')).sendKeys('parent123!');
+			element(by.buttonText('Login')).click();
+			expect(browser.getCurrentUrl()).toEqual('http://localhost:3001/user-feeds');
+		});
 	});
 });

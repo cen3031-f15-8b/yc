@@ -52,7 +52,7 @@ angular.module('user-feeds').config(['$stateProvider',
 			templateUrl: 'module/user-feeds/views/todays-workout.client.view.html'
 		}).
 		state('workout', {
-			url: '/workout',
+			url: '/workout/:workoutid',
 			templateUrl: 'modules/workouts/views/list-workouts.client.view.html'
 		});
 	}

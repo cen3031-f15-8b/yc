@@ -7,7 +7,7 @@ describe('Parents E2E Tests:', function() {
 			element(by.model('credentials.firstName')).sendKeys('Test');
 			element(by.model('credentials.lastName')).sendKeys('Parent');
 			element(by.model('credentials.email')).sendKeys('nobody@example.com');
-			element(by.model('credentials.username')).sendKeys('testparent');
+			element(by.model('credentials.username')).sendKeys('testparent2');
 			element(by.model('credentials.password')).sendKeys('parent123!');
 			element(by.buttonText('Sign up')).click();
 
@@ -18,7 +18,7 @@ describe('Parents E2E Tests:', function() {
 			element(by.model('credentials.firstName')).sendKeys('Test');
 			element(by.model('credentials.lastName')).sendKeys('Child1');
 			element(by.model('credentials.age')).sendKeys('7');
-			element(by.model('credentials.username')).sendKeys('testparentchild1');
+			element(by.model('credentials.username')).sendKeys('testparentchild3');
 			element(by.model('credentials.password')).sendKeys('parent123!');
 			element(by.buttonText('Add child')).click();
 			expect(element(by.binding('success')).getText()).toEqual('Added a child!');
