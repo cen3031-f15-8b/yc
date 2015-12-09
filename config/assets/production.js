@@ -18,7 +18,7 @@ module.exports = {
 				'public/lib/javascript-state-machine/state-machine.min.js',
 				//'public/lib/sprintf/src/angular-sprintf.js', //TODO: should I use angular service or raw sprintf?
 				'public/lib/sprintf/src/sprintf.js',
-				'public/lib/lodash.min.js'
+				'public/lib/lodash/lodash.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',

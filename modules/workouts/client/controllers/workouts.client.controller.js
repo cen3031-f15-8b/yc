@@ -1,8 +1,8 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Workouts', 'WorkoutResults', '$timeout', '$state', '$window',
-	function($scope, $http, $stateParams, $location, Authentication, Workouts, WorkoutResults, $timeout, $state, $window) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$http', '$location', '$state', '$stateParams', '$timeout', 'Authentication', 'Users', 'WorkoutResults', 'Workouts',
+	function($scope, $window, $http, $location, $state, $stateParams, $timeout, Authentication, Users, WorkoutResults, Workouts) {
 		$scope.authentication = Authentication;
 		$scope._ = _;
 
@@ -88,11 +88,24 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 
 		// Get current location
 		$window.navigator.geolocation.getCurrentPosition(function(position) {
-			var lat = position.coords.latitude;
-			var lng = position.coords.longitude;
 
-			console.log(position);
+			$scope.position = {
+				latitude: position.coords.latitude,
+				longitude: position.coords.longitude,
+				timestamp: position.timestamp
+			};
+
+			$scope.updateLocation();
 		});
+
+		$scope.updateLocation = function() {
+
+			$http.post('/api/auth/location', $scope.position).success(function(response) { //FIXME: is this required? do we care about the response?
+				$scope.successMsg = response.message;
+			}).error(function(response) {
+				$scope.error = response.message;
+			});
+		};
 
 		$scope.submitResult = function(){
 			var result = new WorkoutResults({
@@ -271,7 +284,6 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$http', 
 			});
 			$scope.timerFSM.counter = $scope.workout.seconds;
 		};
-
 
 	}
 
