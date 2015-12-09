@@ -1,8 +1,8 @@
 'use strict';
 
 // Plans controller
-angular.module('plans').controller('PlansController', ['$scope', '$stateParams', '$location', '$log','Authentication', 'Plans', 'Workouts',	
-	function($scope, $stateParams, $location, $log, Authentication, Plans, Workouts) {
+angular.module('plans').controller('PlansController', ['$scope', '$stateParams', '$location', '$log','Authentication', 'Plans', 'Workouts', '$resource',	
+	function($scope, $stateParams, $location, $log, Authentication, Plans, Workouts, $resource) {
 		$scope.authentication = Authentication;
 		// $scope.workout_id = '564f8ca4095addac5fe9b99e';
 
@@ -49,12 +49,12 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 
 		$scope.initializeWorkoutsArray = function(temp) {
 			$scope.tmpWorkoutName = temp;
-			console.log("$scope.tmpWorkoutName = ");
+			console.log('$scope.tmpWorkoutName =');
 			console.log($scope.tmpWorkoutName);
 			$scope.tmpWorkoutId = Workouts.get({
 				name: $scope.tmpWorkoutName
 			})._id;
-			console.log("$scope.tmpWorkoutId = ");
+			console.log('$scope.tmpWorkoutId = ');
 			console.log($scope.tmpWorkoutId);
 			$scope.tempWorkoutsArr.push($scope.tmpWorkoutId);
 		};
@@ -130,11 +130,15 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 
 		// Find plans by category
 		$scope.findByCategory = function(cat) {
-			$scope.catplans = Plans.query({
-				category: 'Whole Body'
+			// $scope.catplans = Plans.get({
+			// 	category: $stateParams.planCategory
+			// });
+			// console.log('Category = ' + $stateParams.planCategory);
+			// console.log('Plans = ' + Plans);
+			var PlansInCategory = $resource('/api/plans/category/:planCategory');
+			$scope.catplans = PlansInCategory.query({
+				planCategory: cat
 			});
-			console.log('Category = ' + cat);
-			console.log('Plans = ' + Plans);
 		};
 
 		
