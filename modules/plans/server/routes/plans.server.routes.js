@@ -17,13 +17,11 @@ module.exports = function(app) {
 		.delete(plans.delete);
 
 	// Trying to facilitate fetching a plan by category
-	app.route('/api/plans/:planCategory').all()
+	app.route('/api/plans/category/:planCategory').all()
 		.get(plans.planByCategory);
 
 	// Finish by binding the Plan middleware
 	app.param('planId', plans.planByID);
-	app.param('workoutId', workouts.workoutByID);
-	app.param('workoutName', workouts.workoutByName);
-	app.param('planCategory', plans.planByCategory);
+	app.param('planCategory', plans.planByCategoryMiddleware);
 
 };

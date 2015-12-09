@@ -84,14 +84,16 @@ exports.list = function(req, res) { Plan.find().sort('-created').populate('user'
 	});
 };
 
-exports.planByCategory = function(req, res, planCategory) { Plan.findOne({category: planCategory}).exec(function(err,plans) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(plans);
-		}
+exports.planByCategory = function(req, res) {
+	res.jsonp(req.plans);
+};
+
+exports.planByCategoryMiddleware = function(req, res, next, planCategory) { Plan.find({category: planCategory}).exec(function(err,plans) {
+		if (err) return next(err);
+		if (! plans) return next(new Error('Failed to load Plans from category ' + planCategory));
+
+		req.plans = plans;
+		next();
 	});
 };
 
