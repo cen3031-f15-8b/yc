@@ -28,7 +28,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 					$scope.rating = 0;
 				},
 				onstart: function(event, from, to){
-					$scope.timerFSM.countdownCounter = 2;
+					$scope.timerFSM.countdownCounter = 10;
 					$scope.timerFSM.counter = $scope.workout.seconds;
 					$scope.gostring = $scope.convertSeconds($scope.timerFSM.countdownCounter--);
 				},
@@ -80,7 +80,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			}
 		});
 
-		$scope.timerFSM.countdownCounter = 2; // TODO: make these dynamic
+		$scope.timerFSM.countdownCounter = 10; // TODO: make these dynamic
 		$scope.timerFSM.counter = 60;
 		$scope.timerFSM.intervalHandle = undefined;
 		$scope.lastequipment = '';
@@ -121,7 +121,9 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 				}).success(function(response){
 					$scope.result = undefined;
 					$scope.findOne();
-					$scope.timerFSM.submit();
+					$state.go('workouts.leaderboard', {
+						workoutId: $stateParams.workoutId
+					});
 				}).error(function(response){
 					// TODO/XXX: handle rating submission error
 				});
@@ -138,6 +140,17 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			$scope.rating = star;
 		};
 
+		//////////////////////////////////////////////////////////
+		// Leaderboard functions
+		/////////////////////////////////////////////////////////
+
+		$scope.initializeLeaderboard = function(){
+			$scope.workoutId = $stateParams.workoutId;
+			$http.get('/api/workouts/results/'+$stateParams.workoutId)
+					.success(function(response){
+						$scope.leaderboardResults = response;
+					});
+		};
 
 		//////////////////////////////////////////////////////////
 		// CRUD functions
