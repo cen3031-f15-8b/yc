@@ -5,8 +5,8 @@
 
     <br/><br/>
 
-    <div class="container" data-ng-repeat = "plan in plans" data-ng-href="/#!/plans/{{plan._id}}">
-        <div class="col-xs-12 list-group-item">
+    <div class="list-group">
+        <a data-ng-repeat = "plan in plans" data-ng-href="/#!/plans/{{plan._id}}" class="col-xs-12 list-group-item">
             <h4 class="rush-reg"> <strong> {{plan.name}} </strong></h4>
             <!-- <a data-ng-repeat="plan in plans" data-ng-href="/#!/plans/{{plan._id}}" class="list-group-item">
             </a> -->
@@ -24,7 +24,7 @@
                         <i data-ng-repeat="star in _.range(1,6)" class="glyphicon" data-ng-class="{'glyphicon-star': plan.rating >= star, 'glyphicon-star-empty': plan.rating < star}"></i>
                     </div>
             </div>
-        </div>
+        </a>
         <!-- TODO/XXX: Still working on retrieving workouts by name from the Workouts collections -->
         <!-- <div class="container" data-ng-controller="WorkoutsController" data-ng-init="find()">
             <div class="container" data-ng-repeat="workout in workouts">

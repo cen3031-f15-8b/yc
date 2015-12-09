@@ -88,7 +88,8 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 
 		// Find a list of Workouts
 		$scope.findWorkout = function() {
-			$scope.workouts = Workouts.query();
+			var AllWorkouts = $resource('/api/workouts');
+			$scope.workouts = AllWorkouts.query();
 		};
 
 		// Find existing Workout by ID

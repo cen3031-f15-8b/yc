@@ -16,6 +16,10 @@ module.exports = function(app) {
 		.put(plans.update)
 		.delete(plans.delete);
 
+	// Workout Routes 
+	app.route('/api/workouts').all()
+		.get(workouts.list).all();
+
 	// Trying to facilitate fetching a plan by category
 	app.route('/api/plans/category/:planCategory').all()
 		.get(plans.planByCategory);
