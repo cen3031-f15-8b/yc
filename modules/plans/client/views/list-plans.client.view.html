@@ -1,20 +1,37 @@
-<section data-ng-controller="PlansController" data-ng-init="find()">
-    <div class="page-header">
-        <h1>Plans</h1>
+<section data-ng-controller="PlansController" data-ng-init="findAll()">
+    <div class="list-group-item">
+        <h1 class="rush-reg">ALL PLANS</h1>
     </div>
-    <button data-ui-sref="plans.category-plan" class="list-group-item">Categories</button>
+
+    <br/><br/>
+
     <div class="list-group">
-        <a data-ng-repeat="plan in plans" data-ng-href="/#!/plans/{{plan._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="plan.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="plan.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="plan.name"></h4>
+        <a data-ng-repeat = "plan in plans" data-ng-href="/#!/plans/{{plan._id}}" class="col-xs-12 list-group-item">
+            <h4 class="rush-reg"> <strong> {{plan.name}} </strong></h4>
+            <!-- <a data-ng-repeat="plan in plans" data-ng-href="/#!/plans/{{plan._id}}" class="list-group-item">
+            </a> -->
+
+            <div class="col-xs-6">
+                <p><strong>World</strong></p>
+                <p><strong>{{ plan.timesCompleted }}</strong> completed</p>
+                <!--TODO/XXX: Have not implemented any kind of "users currently doing this workout" -- What does currently mean?-->
+                <!--<p><strong>4321</strong> currently</p>-->
+            </div>
+            <div class="col-xs-4">
+                    <h4></h4>
+                    <p style="text-right"><strong>Rating</strong></p>
+                    <div class="col-xs-12">
+                        <i data-ng-repeat="star in _.range(1,6)" class="glyphicon" data-ng-class="{'glyphicon-star': plan.rating >= star, 'glyphicon-star-empty': plan.rating < star}"></i>
+                    </div>
+            </div>
         </a>
-    </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!plans.$resolved || plans.length">
-    	No Plans yet, why don't you <a href="/#!/plans/create">create one</a>?
+        <!-- TODO/XXX: Still working on retrieving workouts by name from the Workouts collections -->
+        <!-- <div class="container" data-ng-controller="WorkoutsController" data-ng-init="find()">
+            <div class="container" data-ng-repeat="workout in workouts">
+            <p>{{workout.name}}
+            </p>
+            </div>
+        </div> -->
+        <br/>
     </div>
 </section>

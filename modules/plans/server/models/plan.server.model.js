@@ -16,13 +16,31 @@ var PlanSchema = new Schema({
 		required: 'Please fill Plan name',
 		trim: true
 	},
-	created: {
-		type: Date,
-		default: Date.now
+	duration: {
+		type: Number,
+		default: 1,
+		min: 1,
+		required: 'Please enter the duration of the plan in weeks',
 	},
-	user: {
+	numberOfDaysPerWeek: {
+		type: [Number]
+	},
+	workouts: [{
 		type: Schema.ObjectId,
-		ref: 'User'
+		ref: 'Workout'
+	}],
+	category: {
+		type: String,
+		enum: ['Whole Body', 'Upper Body', 'Lower Body'],
+		required: 'Please enter plan category'
+	},
+	rating: {  
+		type: Number,
+		default: 0
+	},
+	timesCompleted: {
+		type: Number,
+		default: 0
 	}
 });
 

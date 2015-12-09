@@ -72,7 +72,7 @@ exports.delete = function(req, res) {
 /**
  * List of Workouts
  */
-exports.list = function(req, res) { Workout.find().sort('-created').populate().exec(function(err, workouts) {
+exports.list = function(req, res) { Workout.find().sort('-created').exec(function(err, workouts) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -89,6 +89,14 @@ exports.list = function(req, res) { Workout.find().sort('-created').populate().e
 exports.workoutByID = function(req, res, next, id) { Workout.findById(id).exec(function(err, workout) {
 		if (err) return next(err);
 		if (! workout) return next(new Error('Failed to load Workout ' + id));
+		req.workout = workout ;
+		next();
+	});
+};
+
+exports.workoutByName = function(req, res, next, workoutName) { Workout.findOne({name : workoutName}).exec(function(err, workout) {
+		if (err) return next(err);
+		if (! workout) return next(new Error('Failed to load Workout ' + workoutName));
 		req.workout = workout ;
 		next();
 	});

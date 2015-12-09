@@ -1,5 +1,9 @@
-<section data-ng-controller="PlansController" data-ng-init="findOne()">
-    <div class="page-header">
+<section data-ng-controller="PlansController" data-ng-init="findWorkout()">
+
+    <div class="container" data-ng-repeat = "workout in workouts" class="col-xs-12 list-group-item">
+    <h4> {{workout.name}} </h4>
+    </div>
+    <!-- <div class="page-header">
         <h1>Edit Plan</h1>
     </div>
     <div class="col-md-12">
@@ -19,5 +23,5 @@
 				</div>
             </fieldset>
         </form>
-    </div>
+    </div> -->
 </section>
