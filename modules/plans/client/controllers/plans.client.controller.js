@@ -49,9 +49,13 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 
 		$scope.initializeWorkoutsArray = function(temp) {
 			$scope.tmpWorkoutName = temp;
+			console.log("$scope.tmpWorkoutName = ");
+			console.log($scope.tmpWorkoutName);
 			$scope.tmpWorkoutId = Workouts.get({
 				name: $scope.tmpWorkoutName
-			}).workoutId;
+			})._id;
+			console.log("$scope.tmpWorkoutId = ");
+			console.log($scope.tmpWorkoutId);
 			$scope.tempWorkoutsArr.push($scope.tmpWorkoutId);
 		};
 
@@ -101,6 +105,17 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 			});
 		};
 
+		//Initialize create form
+		$scope.initializeCreateForm = function() {
+			$scope.name = '';
+			$scope.category = '';
+			$scope.duration = '';
+			$scope.tempNumDays = '';
+			$scope.numberOfDaysPerWeek = [''];
+			$scope.workoutNames = [''];
+			$scope.workouts = [''];
+		};
+
 		// Find existing Plan
 		$scope.findOne = function() {
 			$scope.plan = Plans.get({ 
@@ -111,6 +126,15 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 		// Find all plans in database
 		$scope.findAll = function() {
 			$scope.plans = Plans.query();
+		};
+
+		// Find plans by category
+		$scope.findByCategory = function(cat) {
+			$scope.catplans = Plans.query({
+				category: 'Whole Body'
+			});
+			console.log('Category = ' + cat);
+			console.log('Plans = ' + Plans);
 		};
 
 		
