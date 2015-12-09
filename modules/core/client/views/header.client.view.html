@@ -1,7 +1,7 @@
 <div class="container" data-ng-controller="HeaderController" data-ng-show="authentication.user">
 	<div class="navbar-header">
 
-		<button class="navbar-button" type="button" value="Home" data-ui-sref = "home"><span class="glyphicon glyphicon-home"></span></button>
+		<button class="navbar-button" type="button" value="Home" data-ui-sref = "home" data-ng-click = "reloadPage()"><span class="glyphicon glyphicon-home"></span></button>
 
 		<button class="navbar-button-back" type="button" value="Back" data-ng-click="goBack()"><span class="glyphicon glyphicon-arrow-left"></span></button>
 

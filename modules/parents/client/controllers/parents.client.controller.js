@@ -65,6 +65,9 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 
 		// Initialize Google Maps
 		$scope.initializeGoogleMaps = function() {
+			// For future reference, :
+			// 		Latitude:		lastKnownLocation.coordinates[1]
+			// 		Longitude:	lastKnownLocation.coordinates[0]
 			var lastKnownLocation, i; // silence "variable is already defined" jshint
 
 			// Calculate the average latitude/longitude
@@ -111,9 +114,26 @@ angular.module('parents').controller('ParentsController', ['$scope', '$statePara
 					var newLat = lastKnownLocation.coordinates[1];
 					var newLong = lastKnownLocation.coordinates[0];
 					var latLong = {lat: newLat, lng: newLong};
+
+					var timestamp = new Date(lastKnownLocation.timestamp);
+
+					// Create an info window that will pop up when a marker is clicked
+					var infowindowContent = '<b>' + $scope.children[i].displayName + '</b>' +
+					'<br/>Last online on ' + timestamp.toLocaleString();
+
+					var infowindow = new google.maps.InfoWindow({
+						content: infowindowContent
+					});
+
+					// Create marker with the data from above
 					var marker = new google.maps.Marker({
 						position: latLong,
-						title: $scope.children[i].displayName
+						title: $scope.children[i].displayName,
+						infowindow: infowindow
+					});
+
+					google.maps.event.addListener(marker, 'click', function() {
+						this.infowindow.open(map, this);
 					});
 
 					// To add the marker to the map, call setMap();
