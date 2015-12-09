@@ -1,50 +1,36 @@
-<section data-ng-controller="UserFeedsController">
-	<body>
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="list-group list-header">
-					<a href="#" class="list-group-item">
-						<h1>WHOLE BODY PLANS</h1>
-					</a>
-				</div>
-			</div>
-		</div>
+<section data-ng-controller="PlansController" data-ng-init="findByCategory('Whole Body')">
+    <div class="list-group-item">
+        <h1 class="rush-reg">WHOLE BODY PLANS</h1>
+    </div>
 
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="panel panel-default">
-					<div class="planimg">
-						<img src="#">
-					</div>
-					<div class="panel-body">
-						<h1 class="panel-title"> 6 Week Strength Program</h1>
-						<div class="row workout-content">
-							<div class="col-xs-3">
-	              				<p> <b>World</b> <br/>
-	                  				1,586 completed <br/>
-	                  				248 currently
-	              				</p>
-				            </div>
-				            <div class="col-xs-3">
-				              	<p> <b>Friends</b> <br/>
-				                  7 completed <br/>
-				                  3 currently
-				              	</p>
-				            </div>
-				            <div class="col-xs-5">
-				              	<p> <b>Rating</b> <br/>
-				                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-				                  <br/>
-				                 </p>
-				            </div>
-				        </div>
-				    </div>
-				</div>
-			</div>
+    <br/><br/>
 
-		</div>
+    <div class="container" data-ng-repeat = "plan in catplans">
+        <div class="col-xs-12 list-group-item">
+            <h4 class="rush-reg"> <strong> {{plan.name}} </strong></h4>
+            <!-- <a data-ng-repeat="plan in plans" data-ng-href="/#!/plans/{{plan._id}}" class="list-group-item">
+            </a> -->
+
+            <div class="col-xs-6">
+                <p><strong>World</strong></p>
+                <p><strong>{{ plan.timesCompleted }}</strong> completed</p>
+                <!--TODO/XXX: Have not implemented any kind of "users currently doing this workout" -- What does currently mean?-->
+                <!--<p><strong>4321</strong> currently</p>-->
+            </div>
+            <div class="col-xs-4">
+                    <h4></h4>
+                    <p style="text-right"><strong>Rating</strong></p>
+                    <div class="col-xs-12">
+                        <i data-ng-repeat="star in _.range(1,6)" class="glyphicon" data-ng-class="{'glyphicon-star': plan.rating >= star, 'glyphicon-star-empty': plan.rating < star}"></i>
+                    </div>
+            </div>
+        </div>
+        <!-- <div class="container" data-ng-controller="WorkoutsController" data-ng-init="find()">
+            <div class="container" data-ng-repeat="workout in workouts">
+            <p>{{workout.name}}
+            </p>
+            </div>
+        </div> -->
+        <br/>
+    </div>
 </section>

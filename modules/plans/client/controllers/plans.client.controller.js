@@ -113,6 +113,15 @@ angular.module('plans').controller('PlansController', ['$scope', '$stateParams',
 			$scope.plans = Plans.query();
 		};
 
+		// Find plans by category
+		$scope.findByCategory = function(cat) {
+			$scope.catplans = Plans.query({
+				category: 'Whole Body'
+			});
+			console.log('Category = ' + cat);
+			console.log('Plans = ' + Plans);
+		};
+
 		
 		// $scope.items = [
   //   'The first choice!',

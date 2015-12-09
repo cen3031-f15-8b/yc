@@ -16,9 +16,14 @@ module.exports = function(app) {
 		.put(plans.update)
 		.delete(plans.delete);
 
+	// Trying to facilitate fetching a plan by category
+	app.route('/api/plans/:planCategory').all()
+		.get(plans.planByCategory);
+
 	// Finish by binding the Plan middleware
 	app.param('planId', plans.planByID);
 	app.param('workoutId', workouts.workoutByID);
 	app.param('workoutName', workouts.workoutByName);
+	app.param('planCategory', plans.planByCategory);
 
 };
