@@ -8,7 +8,7 @@
             <div class="block-content">
                 <div class="col-xs-8">
                     <h4 class="rush-reg"><strong>{{ workout.name }}</strong></h4>
-                    <div class="col-xs-6">
+                    <div class="col-xs-10">
                         <p>World</p>
                         <p><strong>{{ workout.timesCompleted }}</strong> completed</p>
                         <!--TODO/XXX: Have not implemented any kind of "users currently doing this workout" -- What does currently mean?-->
@@ -63,7 +63,7 @@
                 <div class="col-xs-6">
                     <h4><strong>Exercises</strong></h4>
                     <ul>
-                            <li ng-repeat="e in workout.exercises">{{ e }}</li>
+	                    <li ng-repeat="e in workout.exercises">{{ e }}</li>
                     </ul>
                 </div>
             </div>
@@ -87,7 +87,7 @@
         <div class="container" ng-show="timerFSM.is('running')">
             <div>
                 <button ng-click= "timerFSM.cancel()" class="btn stop-btn"><h3 class="x-top-bottom">STOP</h3></button>
-            </div> 
+            </div>
         </div>
     </div>
 
