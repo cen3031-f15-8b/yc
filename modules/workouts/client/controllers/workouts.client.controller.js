@@ -28,7 +28,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 					$scope.rating = 0;
 				},
 				onstart: function(event, from, to){
-					$scope.timerFSM.countdownCounter = 2;
+					$scope.timerFSM.countdownCounter = 10;
 					$scope.timerFSM.counter = $scope.workout.seconds;
 					$scope.gostring = $scope.convertSeconds($scope.timerFSM.countdownCounter--);
 				},
@@ -80,7 +80,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			}
 		});
 
-		$scope.timerFSM.countdownCounter = 2; // TODO: make these dynamic
+		$scope.timerFSM.countdownCounter = 10; // TODO: make these dynamic
 		$scope.timerFSM.counter = 60;
 		$scope.timerFSM.intervalHandle = undefined;
 		$scope.lastequipment = '';
