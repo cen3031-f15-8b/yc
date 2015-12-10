@@ -1,8 +1,8 @@
 'use strict';
 
 // Workouts controller
-angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$http', '$location', '$state', '$stateParams', '$timeout', 'Authentication', 'Users', 'WorkoutResults', 'Workouts',
-	function($scope, $window, $http, $location, $state, $stateParams, $timeout, Authentication, Users, WorkoutResults, Workouts) {
+angular.module('workouts').controller('WorkoutsController', ['$scope', '$window', '$http', '$location', '$state', '$stateParams', '$timeout', '$resource', 'Authentication', 'Users', 'WorkoutResults', 'Workouts',
+	function($scope, $window, $http, $location, $state, $stateParams, $timeout, $resource, Authentication, Users, WorkoutResults, Workouts) {
 		$scope.authentication = Authentication;
 		$scope._ = _;
 
@@ -151,10 +151,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			$scope.seconds = '';
 			$scope.type = 'AMRAP';
 			$scope.difficulty = '';
-			$scope.categories = [''];
-			$scope.Whole_Body = false;
-			$scope.Upper_Body = false;
-			$scope.Lower_Body = false;
+			$scope.category = '';
 
 		};
 
@@ -180,25 +177,6 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 
 		// Create new Workout
 		$scope.create = function() {
-			// Create new Workout object
-			$scope.categories.pop();
-			if ($scope.Whole_Body)
-			{
-				$scope.categories.push('whole-body');
-			}
-			
-
-			if ($scope.Upper_Body)
-			{
-				$scope.categories.push('upper-body');
-			}
-			
-
-			if ($scope.Lower_Body)
-			{
-				$scope.categories.push('lower-body');
-			}
-
 
 
 			var workout = new Workouts({
@@ -207,11 +185,8 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 				exercises: this.exercises,
 				seconds: this.seconds,
 				type: this.type,
-				categories: this.categories,
-				difficulty: this.difficulty,
-				Whole_Body: this.Whole_Body,
-				Upper_Body: this.Upper_Body,
-				Lower_Body: this.Lower_Body
+				category: this.category,
+				difficulty: this.difficulty
 			});
 
 			// Redirect after save
@@ -226,10 +201,7 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 				$scope.seconds = '';
 				$scope.type = '';
 				$scope.difficulty = '';
-				$scope.categories ='';
-				$scope.Whole_Body = false;
-				$scope.Upper_Body = false;
-				$scope.Lower_Body = false;
+				$scope.category ='';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -274,8 +246,13 @@ angular.module('workouts').controller('WorkoutsController', ['$scope', '$window'
 			});
 			$scope.timerFSM.counter = $scope.workout.seconds;
 		};
-
-
+		$scope.findByCategory = function(cat) {
+			
+			var WorkoutsInCategory = $resource('/api/workouts/category/:workoutCategory');
+			$scope.catworkouts = WorkoutsInCategory.query({
+				workoutCategory: cat
+			});
+		};
 	}
 
 

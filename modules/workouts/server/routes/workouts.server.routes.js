@@ -22,6 +22,10 @@ module.exports = function(app) {
 		.put(workouts.update)
 		.delete(workouts.delete);
 
+	app.route('/api/workouts/category/:workoutCategory').all()
+		.get(workouts.workoutByCategory);
+
 	// Finish by binding the Workout middleware
 	app.param('workoutId', workouts.workoutByID);
+	app.param('workoutCategory', workouts.workoutByCategoryMiddleware);
 };

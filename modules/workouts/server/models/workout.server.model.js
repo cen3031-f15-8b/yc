@@ -38,8 +38,10 @@ var WorkoutSchema = new Schema({
         min: 1,
         max: 5
     },
-    categories: {
-    	type: [String]
+    category: {
+        type: String,
+        enum: ['Whole Body', 'Upper Body', 'Lower Body'],
+        required: 'Please enter workout category'
     },
     rating: {
         type: Number,

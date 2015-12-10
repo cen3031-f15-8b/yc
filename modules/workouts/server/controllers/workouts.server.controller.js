@@ -72,7 +72,7 @@ exports.delete = function(req, res) {
 /**
  * List of Workouts
  */
-exports.list = function(req, res) { Workout.find().sort('-created').populate().exec(function(err, workouts) {
+exports.list = function(req, res) { Workout.find().sort('-created').populate('user', 'displayName').exec(function(err, workouts) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -122,3 +122,17 @@ exports.storeRating = function(req, res) {
 		}
 	});
 };
+
+exports.workoutByCategory = function(req, res) {
+	res.jsonp(req.workouts);
+};
+
+exports.workoutByCategoryMiddleware = function(req, res, next, workoutCategory) { Workout.find({category: workoutCategory})	.exec(function(err,workouts) {
+		if (err) return next(err);
+		if (! workouts) return next(new Error('Failed to load Workouts from category ' + workoutCategory));
+
+		req.workouts = workouts;
+		next();
+	});
+};
+
