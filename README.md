@@ -74,3 +74,10 @@ In order to use the application, you must first create an account.
 
 ### Viewing the Leaderboard
 ![Leaderboard View](https://github.com/cen3031-f15-8b/yc/blob/UpdatingREADME/YC_App_Screenshots/ViewLeaderboard.png)
+
+# Running our application on your local machine
+Instructions for running our application locally can be found below: 
+
+// will add step-by-step instructions! 
+
+# Database and Server Connections
