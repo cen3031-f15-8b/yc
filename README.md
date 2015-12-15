@@ -1,3 +1,5 @@
+#[yc-dev.herokuapp.com](http://yc-dev.herokuapp.com)
+
 # About the Team
 This application is being built through the University of Florida Computer and Information Sciences Engineering Department. The project is created under Dr. Christina Gardner-McCune’s Intro to Software Engineering Course by students enrolled in the Fall 2015 semester.
 
@@ -23,14 +25,29 @@ We are using the MEAN stack to develop our application. For more information abo
 
 In addition, we are using Google’s Maps API in order to support the necessary geolocation capabilities within our application. For more information about their API, take a look at their developer site [here](https://developers.google.com/maps/). 
 
-# Our Progress
-Though we have not yet deployed our product, we are documenting our progress as we continue implementation. Take a peek at a few screenshots of our application below.  
+## Bootstrap
+![Bootstrap Logo](https://github.com/cen3031-f15-8b/yc/blob/UpdatingREADME/YC_App_Screenshots/BootstrapLogo.png)
 
-### Sign In
+For much of our front-end development, we used Bootstrap's available components and code. FOr more information about Bootstrap, you can visit their general website [here](http://getboostrap.com/).
+
+Note: In order to fully integrate some Bootstrap components with AngularJS, we used the resources found in this GitHub repository [here](http://dhrmgddn.com/wp-content/uploads/2015/01/bootstrap.png).
+
+# Our Progress
+A link to our deployed application is [here](http://yc-dev.herokuapp.com)! 
+
+Here are a few screenshots of our application, organized by feature.
+
+## Landing Page
 ![Sign In Page](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/SignIn.png)
+
+In order to use the application, you must first create an account. 
 
 ### Sign Up
 ![Sign Up Page](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/SignUp.png)
+
+## Parent Application
+### Parent Feed
+![Parent Feed](https://github.com/cen3031-f15-8b/yc/blob/UpdatingREADME/YC_App_Screenshots/ParentFeed.png)
 
 ### User's Feed
 ![User Feed1](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/Feed1.png)
