@@ -46,10 +46,14 @@ In order to use the application, you must first create an account.
 ![Sign Up Page](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/SignUp.png)
 
 ## Parent Application
-### Parent Feed
+### Parent's Feed
 ![Parent Feed](https://github.com/cen3031-f15-8b/yc/blob/UpdatingREADME/YC_App_Screenshots/ParentFeed.png)
 
-### User's Feed
+### Creating a Child Account
+![Parent Add Child](https://github.com/cen3031-f15-8b/yc/blob/UpdatingREADME/YC_App_Screenshots/ParentAddChild.png)
+
+## Child Application
+### Child's Feed
 ![User Feed1](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/Feed1.png)
 
 ![User Feed2](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/Feed2.png)
@@ -59,8 +63,14 @@ In order to use the application, you must first create an account.
 ### Workout Library 
 ![Workout Lib](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/WorkoutLib.png)
 
-### Single Workout 
+### Viewing a Workout 
 ![Workout View](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/WorkoutView.png)
 
-### Start Workout
+### Starting a Workout
 ![Workout Start](https://github.com/cen3031-f15-8b/yc/blob/master/YC_App_Screenshots/WorkoutStart.png)
+
+### Completing a Workout
+![Workout Done](https://github.com/cen3031-f15-8b/yc/blob/UpdatingREADME/YC_App_Screenshots/SubmitResults.png)
+
+### Viewing the Leaderboard
+![Leaderboard View](https://github.com/cen3031-f15-8b/yc/blob/UpdatingREADME/YC_App_Screenshots/ViewLeaderboard.png)
