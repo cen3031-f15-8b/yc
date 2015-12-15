@@ -28,9 +28,9 @@ In addition, we are using Google’s Maps API in order to support the necessary 
 ## Bootstrap
 ![Bootstrap Logo](https://github.com/cen3031-f15-8b/yc/blob/UpdatingREADME/YC_App_Screenshots/BootstrapLogo.png)
 
-For much of our front-end development, we used Bootstrap's available components and code. FOr more information about Bootstrap, you can visit their general website [here](http://getboostrap.com/).
+For much of our front-end development, we used Bootstrap's available components and code. FOr more information about Bootstrap, you can visit their general website [here](http://getbootstrap.com/).
 
-Note: In order to fully integrate some Bootstrap components with AngularJS, we used the resources found in this GitHub repository [here](http://dhrmgddn.com/wp-content/uploads/2015/01/bootstrap.png).
+Note: In order to fully integrate some Bootstrap components with AngularJS, we used the resources found in this GitHub repository [here](https://angular-ui.github.io/bootstrap/).
 
 # Our Progress
 A link to our deployed application is [here](http://yc-dev.herokuapp.com)! 
