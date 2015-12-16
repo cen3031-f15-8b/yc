@@ -76,8 +76,42 @@ In order to use the application, you must first create an account.
 ![Leaderboard View](YC_App_Screenshots/ViewLeaderboard.png)
 
 # Running our application on your local machine
-Instructions for running our application locally can be found below: 
+To install and run our application locally: 
 
-// will add step-by-step instructions! 
+1. Install Ruby (meanjs requires sass requires Ruby)
+  - <http://rubyinstaller.org/downloads/> on Windows, or your favorite package manager for *nix/OSX
+2. Install Python 2.7 (meanjs requires /something/ requires Python)
+  - <https://python.org> or your favorite package manager
+3. Install sass
+  - `gem install sass`
+4. Install Node.js
+  - <https://nodejs.org>, nvm, other package managers
+5. Install MongoDB (optional if using hosted Mongo such as MongoLab)
+  - <https://www.mongodb.org/downloads> or your favorite package manager
+6. Install Git
+  - <https://git-scm.com/> or your favorite package manager
+7. Install required packages with NPM
+  - `npm install – g bower`
+  - `npm install –g grunt-cli`
+8. Install optional packages (only required if adding new modules)
+ - `npm install –g yo`
+ - `npm install -g khaledhassan/generator-meanjs#0.4-dev`
+9. Clone this repository 
+10. Configure MongoDB connection as described below for development environment
+11. In a terminal, run `grunt` from the root of the cloned repository
+12. Navigate to http://localhost:3000 
 
 # Database and Server Connections
+
+## To configure the development environment:
+
+1. Copy `config/config.secret.js.template` to `config/config.secret.js`
+  - This file is blacklisted in the `.gitignore` file to avoid leaking credentials in the repository.
+2. Edit the line containing the TODO comment; put your MongoDB URI in the single quotes in the format: `mongodb://user:pass@host.name:port/db-name`
+
+*Important*: The app will not start in the development environment without this configuration file!
+
+## To configure the production environment (i.e. deploying the app):
+ 
+The production environment reads environment variables rather than configuration files (with a fallback to localhost). To point the app to the MongoDB instance, set either the `MONGOHQ_URL` or `MONGOLAB_URI` environment variables to the connection string described in the development environment section above.
+
