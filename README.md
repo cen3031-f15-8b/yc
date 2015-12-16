@@ -16,17 +16,17 @@ Youth Combine is a non-profit organization that promotes health and fitness in c
 
 # The Technology
 ## MEANJS 
-![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)
+![MEAN.JS Logo](YC_App_Screenshots/MeanJSLogoSmall.png)
 
 We are using the MEAN stack to develop our application. For more information about MEAN.js, visit their github repository [here](https://github.com/meanjs) or their webpage [here](http://meanjs.org/).  
 
 ## Google Maps 
-![GoogleMaps Logo](https://www.gstatic.com/images/branding/product/1x/maps_64dp.png)
+![GoogleMaps Logo](YC_App_Screenshots/GoogleMapsLogoSmall.png)
 
 In addition, we are using Google’s Maps API in order to support the necessary geolocation capabilities within our application. For more information about their API, take a look at their developer site [here](https://developers.google.com/maps/). 
 
 ## Bootstrap
-![Bootstrap Logo](YC_App_Screenshots/BootstrapLogo.png)
+![Bootstrap Logo](YC_App_Screenshots/BootstrapLogoSmall.png)
 
 For much of our front-end development, we used Bootstrap's available components and code. FOr more information about Bootstrap, you can visit their general website [here](http://getbootstrap.com/).
 
